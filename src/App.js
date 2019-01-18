@@ -1,25 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import ReactSwipe from 'react-swipe';
 import './App.css';
 
+import Main from'./Main/Main.js';
+import Info from'./Info/Info.js';
+
+
+
 class App extends Component {
+
   render() {
+    let reactSwipeEl;
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            test nori kiz cafa
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="swipe-wrap">
+        <ReactSwipe
+          swipeOptions={{
+            startSlide: 1,
+            continuous: false,
+            disableScroll: false,
+            callback() {
+              console.log('slide changed');
+            },
+            transitionEnd() {
+              console.log('ended transition');
+            }
+           }}
+          ref={el => (reactSwipeEl = el)}
+        >
+          <div><Info /></div>
+          <div><Main /></div>
+        </ReactSwipe>
+      <button onClick={() => reactSwipeEl.next()}>Next</button>
+      <button onClick={() => reactSwipeEl.prev()}>Previous</button>
+
       </div>
     );
   }

@@ -1,0 +1,28 @@
+.info {
+}
+
+.infoView1 {
+  float: left;
+  left: 0px;
+  width: 50%;
+  min-height: 98vh;
+  background-color: Orange;
+}
+
+.infoView2 {
+  float: right;
+  width: 50%;
+  min-height: 38vh;
+  text-align: center;
+  align-items: center;
+  background-color: green;
+}
+
+.infoView3 {
+  float: right;
+  right: 0px;
+  bottom: 0px;
+  width: 50%;
+  min-height: 62vh;
+  background-color: black;
+}
