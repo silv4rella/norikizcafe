@@ -1,0 +1,35 @@
+.list {
+background-color: rgba(255,255,0,0.3);
+}
+
+.listView {
+  /* float: left; */
+  /* left: 0px; */
+  margin: auto;
+  width: 80%;
+  min-height: 100vh;
+  text-align: center;
+  background-color: rgba(0,0,255,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleText{
+  position: absolute;
+  top: 20px;
+  font-size: calc(10px + 2vmin);
+}
+
+.listBox{
+  margin: auto;
+  text-align: center;
+  width: 85%;
+  min-height: 50vh;
+  background-color: rgba(0,0,255,0.7);
+}
+
+.BoxButton{
+  width: 16%;
+  min-height: 10vh;
+}

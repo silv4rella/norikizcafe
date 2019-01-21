@@ -29,18 +29,27 @@
   height: 90%;
 }
 
-.App-header {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.prevButton {
+  position: absolute;
+  display: inline-block;
+  left: 0px;
+  top: 50%;
+  transform: translate(0%, -50%);
+  width: 5%;
+  min-height: 30vh;
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline: inherit;
+  font-size: 0px;
 }
 
-.App-link {
-  color: #61dafb;
+.prevButton:hover {
+  background-color: rgba(255,255,255,0.5); /* Green */
+  color: white;
+  font-size: 40px;
 }
 
 input[type=number] {

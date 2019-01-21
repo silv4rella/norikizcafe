@@ -4,6 +4,10 @@ import './Info.css';
 class Info extends Component {
 
 
+  state = {
+      pn: '',
+      swipe:''
+  }
 
 
   render() {
@@ -13,8 +17,9 @@ class Info extends Component {
       </div>
       <div className="infoView2">
       </div>
-        <div className="infoView3">
-        </div>
+      <div className="infoView3">
+      </div>
+      <button className="nextButton" onClick={this.props.swipe}>▶</button>
     </div>
     );
   }

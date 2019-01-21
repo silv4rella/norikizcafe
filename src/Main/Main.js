@@ -5,7 +5,9 @@ import './Main.css';
 class Main extends Component {
 
 state = {
-    pn: ''
+    pn: '',
+    swipe:'',
+    start:''
 }
 
 input1 = (e) => {
@@ -20,12 +22,15 @@ clear = (e) => {
   })
 }
 
+start = this.props.start
+
 
   render() {
     return (
       <div>
         <div className="View1">
           <img src={logo} className="App-logo" alt="login1" />
+          <button className="prevButton" onClick={this.props.swipe}>◀</button>
         </div>
         <div className="View2">
           <input
@@ -34,7 +39,7 @@ clear = (e) => {
             name="phonenum"
             readOnly value={this.state.pn}/>
           <button className="button1" onClick={this.input1}>Admin</button>
-          <button className="button1" onClick={this.input1}>Start</button>
+          <button className="button1" onClick={this.start}>Start</button>
         </div>
         <div className="View3">
           <button className="button2" value="7" onClick={this.input1}>7</button>

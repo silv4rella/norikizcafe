@@ -1,21 +1,25 @@
 .info {
+    flex-direction: column;
+    min-height: 98vh;
+    max-height: 100vh;
 }
 
 .infoView1 {
   float: left;
   left: 0px;
   width: 50%;
-  min-height: 98vh;
-  background-color: Orange;
+  min-height: 100vh;
+	/* border: 1px dotted Orange; */
+  background-color: rgba(255,255,0,0.3);
 }
 
 .infoView2 {
   float: right;
   width: 50%;
+  top: 0px;
   min-height: 38vh;
-  text-align: center;
-  align-items: center;
-  background-color: green;
+	/* border: 1px dotted green; */
+  background-color: rgba(0,255,0,0.3);
 }
 
 .infoView3 {
@@ -24,5 +28,30 @@
   bottom: 0px;
   width: 50%;
   min-height: 62vh;
-  background-color: black;
+	/* border: 1px dotted black; */
+  background-color: rgba(0,0,0,0.3);
+}
+
+
+.nextButton {
+  position: absolute;
+  display: inline-block;
+  right: 0px;
+  top: 50%;
+  transform: translate(0%, -50%);
+  width: 5%;
+  min-height: 30vh;
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline: inherit;
+  font-size: 0px;
+}
+
+.nextButton:hover {
+  background-color: rgba(255,255,255,0.5); /* Green */
+  color: white;
+  font-size: 40px;
 }

@@ -4,6 +4,7 @@ import './App.css';
 
 import Main from'./Main/Main.js';
 import Info from'./Info/Info.js';
+import List from'./List/List.js';
 
 
 
@@ -28,12 +29,10 @@ class App extends Component {
            }}
           ref={el => (reactSwipeEl = el)}
         >
-          <div><Info /></div>
-          <div><Main /></div>
+          <div><Info swipe={() => reactSwipeEl.slide(1, 200)}/></div>
+          <div><Main swipe={() => reactSwipeEl.slide(0, 200)} start={() => reactSwipeEl.slide(2, 200)}/></div>
+          <div><List /></div>
         </ReactSwipe>
-      <button onClick={() => reactSwipeEl.next()}>Next</button>
-      <button onClick={() => reactSwipeEl.prev()}>Previous</button>
-
       </div>
     );
   }
