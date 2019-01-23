@@ -6,43 +6,83 @@ import Main from'./Main/Main.js';
 import Info from'./Info/Info.js';
 import List from'./List/List.js';
 
-const listPageMaxCount = 36;
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.handler = this.handler.bind(this);
+    this.mainViewOff = this.mainViewOff.bind(this);
+  }
 
-let listData = [
+  handler(e){
+    this.setState({
+      index: e,
+    });
+    console.log(this.state);
+  }
+
+listPageMaxCount = 36;
+
+listData = [
   {
     index:'0',
     name:'0name',
-    startTime:'',
-    endTime:'',
+    startTime:'00:00:00',
+    endTime:'00:00:00',
     phoneNum:'010-1111-1111',
   },
   {
     index:'1',
     name:'1name',
-    startTime:'',
-    endTime:'',
+    startTime:'00:00:00',
+    endTime:'00:00:00',
     phoneNum:'010-2222-2222',
   },
   {
     index:'2',
     name:'2name',
-    startTime:'',
-    endTime:'',
+    startTime:'00:00:00',
+    endTime:'00:00:00',
     phoneNum:'010-3333-3333',
   },
   {
     index:'3',
     name:'3name',
-    startTime:'',
-    endTime:'',
+    startTime:'00:00:00',
+    endTime:'00:00:00',
     phoneNum:'010-4444-4444',
   }
 ]
 
-class App extends Component {
+state = {
+  index:'',
+  name:'',
+  startTime:'',
+  endTime:'',
+  phoneNum:'',
+}
+
+mainViewStep = true;
+mainViewOff(e){
+    this.setState({
+      mainViewStep : e
+    });
+      console.log(this.mainViewStep);
+}
 
   render() {
     let reactSwipeEl;
+
+    let mainView;
+
+    this.mainViewStep ?
+      (mainView = <Main swipe={() => reactSwipeEl.slide(0, 200)}
+            start={this.mainViewOff}
+      />) :
+      (mainView = <List swipe={() => reactSwipeEl.slide(0, 200)}
+            action={this.handler}
+            listData={this.listData}
+            listPageMaxCount={this.listPageMaxCount}
+      />)
 
     return (
       <div className="swipe-wrap">
@@ -61,9 +101,9 @@ class App extends Component {
           ref={el => (reactSwipeEl = el)}
         >
           <div><Info swipe={() => reactSwipeEl.slide(1, 200)} /></div>
-          <div><Main swipe={() => reactSwipeEl.slide(0, 200)}
-                    start={() => reactSwipeEl.slide(2, 200)} /></div>
-          <div><List swipe={() => reactSwipeEl.slide(0, 200)} listData={listData} listPageMaxCount={listPageMaxCount} /></div>
+          <div>
+            {mainView}
+          </div>
         </ReactSwipe>
       </div>
     );

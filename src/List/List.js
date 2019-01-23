@@ -11,9 +11,12 @@ class ListBox extends Component {
         <button
           className="BoxButton"
           value={this.props.phoneNum}
-          onClick={this.props.swipe}
+          onClick={()=>this.props.action(this.props.phoneNum)}
         >
-          {this.props.index}
+          <div className="BoxButtonText_Title">{this.props.index}</div>
+          <div>{this.props.name ? this.props.name : '-'}</div>
+          <div>{this.props.phoneNum ? this.props.phoneNum : '-'}</div>
+          <div>{this.props.startTime ? this.props.startTime : '-'}</div>
         </button>
     );
   }
@@ -25,7 +28,7 @@ class List extends Component {
     var list = [];
       for (var i = 0; i < this.props.listPageMaxCount; i++) {
          d[i] ?
-           list.push(<ListBox
+           list = list.concat(<ListBox
             key={d[i].index}
             index={d[i].index}
             name={d[i].name}
@@ -33,7 +36,8 @@ class List extends Component {
             endTime={d[i].endTime}
             phoneNum={d[i].phoneNum}
             swipe={this.props.swipe}
-          />) : list.push(<ListBox key={i} index={i} name={i} phoneNum={i} swipe={this.props.swipe}/>)
+            action={this.props.action}
+          />) : list = list.concat(<ListBox key={i} index={i} swipe={this.props.swipe} action={this.props.action}/>)
         }
       return list;
     }

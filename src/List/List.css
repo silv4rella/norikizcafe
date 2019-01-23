@@ -33,3 +33,7 @@ background-color: rgba(255,255,0,0.3);
   width: 16%;
   min-height: 10vh;
 }
+
+.BoxButtonText_Title{
+  font-size: calc(2px + 2vmin);
+}
