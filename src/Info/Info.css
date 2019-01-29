@@ -32,7 +32,6 @@
   background-color: rgba(0,0,0,0.3);
 }
 
-
 .nextButton {
   position: absolute;
   display: inline-block;
@@ -54,4 +53,12 @@
   background-color: rgba(255,255,255,0.5); /* Green */
   color: white;
   font-size: 40px;
+}
+
+.userInfoView{
+  margin: auto;
+  width: 80%;
+  min-height: 40vh;
+	/* border: 1px dotted Orange; */
+  background-color: rgba(0,0,255,0.3);
 }
