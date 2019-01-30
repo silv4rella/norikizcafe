@@ -12,28 +12,28 @@ class AppContainer extends Component {
     listData: [
       {
         index:'0',
-        name:'박지혜',
+        name:'노리',
         startTime:'00:00:00',
         endTime:'00:00:00',
         phoneNum:'010-1111-1111',
       },
       {
         index:'1',
-        name:'이호철',
+        name:'베가스',
         startTime:'00:00:00',
         endTime:'00:00:00',
         phoneNum:'010-2222-2222',
       },
       {
         index:'2',
-        name:'조송미',
+        name:'지니',
         startTime:'00:00:00',
         endTime:'00:00:00',
         phoneNum:'010-3333-3333',
       },
       {
         index:'3',
-        name:'이재경',
+        name:'해리포터',
         startTime:'00:00:00',
         endTime:'00:00:00',
         phoneNum:'010-4444-4444',
