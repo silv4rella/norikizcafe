@@ -56,9 +56,26 @@
 }
 
 .userInfoView{
+  flex-direction: row;
   margin: auto;
   width: 80%;
   min-height: 40vh;
 	/* border: 1px dotted Orange; */
   background-color: rgba(0,0,255,0.3);
+}
+
+
+.label{
+	padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: rgba(0,0,0,0.3);
+  border: 1px solid white;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 30px;
+  cursor: pointer;
 }

@@ -19,6 +19,8 @@ onClickHandle = (e) =>{
               value={this.props.phoneNum}
               onClick={()=>{
                 this.onClickHandle(this.props.phoneNum);
+                store.updateValue("index", this.props.index);
+                store.updateValue("name", this.props.name);
                 store.updateValue("phoneNum", this.props.phoneNum);
               }}
             >

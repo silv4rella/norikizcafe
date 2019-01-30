@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import logo from '../image/login1.jpg';
 import './Main.css';
 
-import Store from "../store.js";
-
 class Main extends Component {
 
 state = {
@@ -38,11 +36,6 @@ clear = (e) => {
             name="phonenum"
             readOnly value={this.state.pn}/>
 
-          <Store.Consumer>
-            {store => (
-              <button className="button1" onClick={() => store.updateValue("phoneNum")}>Admin</button>
-            )}
-          </Store.Consumer>
           <button className="button1" value="false" onClick={()=>this.props.start()}>Start</button>
         </div>
         <div className="View3">

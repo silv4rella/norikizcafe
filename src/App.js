@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactSwipe from 'react-swipe';
+import SwipeableViews from 'react-swipeable-views';
 import './App.css';
 
 import Main from'./Main/Main.js';
@@ -7,70 +7,47 @@ import Info from'./Info/Info.js';
 import List from'./List/List.js';
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.handler = this.handler.bind(this);
-    this.mainViewOff = this.mainViewOff.bind(this);
-    this.mainViewOn = this.mainViewOn.bind(this);
-  }
-
-  handler(e){
-    console.log(e);
-    this.setState({
-      phoneNum: e,
-      viewStep : 0
-    });
-  }
-
-  mainViewOn(){
-      this.setState({
-        viewStep : 1
-      });
-  }
-
-  mainViewOff(){
-      this.setState({
-        viewStep : 2
-      });
-  }
 
 listPageMaxCount = 30;
 
 
 state = {
-  phoneNum: '',
-  viewStep: 1
+ index: 1,
 }
 
-pageSetting(reactSwipeEl) {
-  let mainView;
-  this.state.viewStep === 1 ?
-    (mainView = <Main swipe={reactSwipeEl}
-          start={this.mainViewOff}
-    />) :
-    (mainView = <List swipe={reactSwipeEl}
-          action={this.handler}
-          listPageMaxCount={this.listPageMaxCount}
-    />)
-    return mainView;
-}
+  handleChangeIndex = index => {
+    this.setState({
+      index : index
+    });
+  };
+
+  handleClick0 = index => {
+    this.setState({
+      index: 0
+    });
+  };
+  handleClick1 = index => {
+    this.setState({
+      index: 1
+    });
+  };
+  handleClick2 = index => {
+    this.setState({
+      index: 2
+    });
+  };
+
 
   render() {
-    let reactSwipeEl;
+    const { index } = this.state;
 
     return (
       <div className="swipe-wrap">
-        <ReactSwipe
-          swipeOptions={{
-            startSlide: 1,
-            continuous: false,
-            disableScroll: false,
-           }}
-          ref={el => (reactSwipeEl = el)}
-        >
-          <div><Info swipe={(() => reactSwipeEl.slide(1, 200), this.mainViewOn)} /></div>
-          <div>{this.pageSetting(() => reactSwipeEl.slide(0, 200))}</div>
-        </ReactSwipe>
+        <SwipeableViews index={index} onChangeIndex={this.handleChangeIndex} enableMouseEvents >
+          <div> <Info swipe={this.handleClick1} /> </div>
+          <div> <Main swipe={this.handleClick0} start={this.handleClick2} /> </div>
+          <div> <List swipe={this.handleClick0} listPageMaxCount={this.listPageMaxCount} /> </div>
+        </SwipeableViews>
       </div>
     );
   }
