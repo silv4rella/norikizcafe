@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import './App.css';
 
+import Store from "./store.js";
 import Main from'./Main/Main.js';
 import Info from'./Info/Info.js';
 import List from'./List/List.js';
@@ -42,13 +43,21 @@ state = {
     const { index } = this.state;
 
     return (
-      <div className="swipe-wrap">
-        <SwipeableViews index={index} onChangeIndex={this.handleChangeIndex} enableMouseEvents >
-          <div> <Info swipe={this.handleClick1} /> </div>
-          <div> <Main swipe={this.handleClick0} start={this.handleClick2} /> </div>
-          <div> <List swipe={this.handleClick0} listPageMaxCount={this.listPageMaxCount} /> </div>
-        </SwipeableViews>
-      </div>
+      <Store.Consumer>
+        {store => {
+          if (index === 1 ) {
+            store.stateClear();
+          }
+          return (
+          <div className="swipe-wrap">
+            <SwipeableViews index={index} onChangeIndex={this.handleChangeIndex} enableMouseEvents >
+              <div> <Info swipe={this.handleClick1} /> </div>
+              <div> <Main swipe={this.handleClick0} start={this.handleClick2} /> </div>
+              <div> <List swipe={this.handleClick0} listPageMaxCount={this.listPageMaxCount} /> </div>
+            </SwipeableViews>
+          </div>
+        )}}
+      </Store.Consumer>
     );
   }
 }

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from '../image/login1.jpg';
 import './Main.css';
 
+import Store from "../store.js";
+
 class Main extends Component {
 
 state = {
@@ -12,13 +14,13 @@ state = {
 
 input1 = (e) => {
   this.setState({
-    pn: this.state.pn + e.target.value
+    pn: (this.state.pn === null ? '' : this.state.pn) + e.target.value
   })
 }
 
 clear = (e) => {
   this.setState({
-    pn: ""
+    pn: null
   })
 }
 
@@ -34,9 +36,21 @@ clear = (e) => {
             type="number"
             id="phonenum"
             name="phonenum"
-            readOnly value={this.state.pn}/>
-
-          <button className="button1" value="false" onClick={()=>this.props.start()}>Start</button>
+            readOnly value={this.state.pn ? this.state.pn : ''}/>
+          <Store.Consumer>
+            {store => (
+              <button className="button1"
+                      onClick={()=>{
+                        this.props.start();
+                        console.log(this.state.pn);
+                        store.updateValue("phoneNum", this.state.pn);
+                        this.clear();
+                      }}
+              >
+                Start
+              </button>
+            )}
+          </Store.Consumer>
         </div>
         <div className="View3">
           <button className="button2" value="7" onClick={this.input1}>7</button>

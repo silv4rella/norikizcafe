@@ -28,3 +28,35 @@ background-color: rgba(255,255,0,0.3);
   max-height: 80vh;
   background-color: rgba(0,0,255,0.7);
 }
+
+.BoxButton_used{
+  background-color: Orange;
+  width: 16%;
+  min-height: 10vh;
+  max-height: 16vh;
+}
+
+.BoxButton_unUsed{
+  background-color: white;
+  width: 16%;
+  min-height: 10vh;
+  max-height: 16vh;
+}
+
+.BoxButtonText_Title{
+  min-height: calc(5px + 2.5vmin);
+  max-height: calc(5px + 2.5vmin);
+  font-size: calc(5px + 2vmin);
+}
+
+.BoxButtonText_etc1{
+  min-height: calc(5px + 1.5vmin);
+  max-height: calc(5px + 1.5vmin);
+  font-size: calc(5px + 1vmin);
+}
+
+.BoxButtonText_etc2{
+  min-height: calc(5px + 1.5vmin);
+  max-height: calc(5px + 1.5vmin);
+  font-size: calc(5px + 1vmin);
+}

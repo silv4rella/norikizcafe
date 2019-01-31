@@ -4,23 +4,35 @@ import './List.css';
 import Store from "../store.js";
 import ListBox from "./ListBox.js";
 
-class List extends Component {
-
+class List extends Component
+{
+  findArrayElementBySlotNum(array, useSlotNum) {
+    return array.findIndex((element) => {
+      return element.useSlotNum === useSlotNum;
+    })
+  }
 
   createList(d) {
       var list = [];
       for (var i = 0; i < this.props.listPageMaxCount; i++) {
-       d[i] ?
-         list = list.concat(<ListBox
-          key={d[i].index}
-          index={d[i].index}
-          name={d[i].name}
-          startTime={d[i].startTime}
-          endTime={d[i].endTime}
-          phoneNum={d[i].phoneNum}
-          swipe={this.props.swipe}
-          action={this.props.action}
-        />) : list = list.concat(<ListBox key={i} index={i} swipe={this.props.swipe} action={this.props.action}/>)
+        var findIndex = -1;
+        findIndex = this.findArrayElementBySlotNum(d, i+1);
+        if (findIndex > -1) {
+          list = list.concat(<ListBox
+           key={i}
+           index={i+1}
+           listIndex={findIndex}
+           useSlotNum={d[findIndex].useSlotNum}
+           name={d[findIndex].name}
+           startTime={d[findIndex].startTime}
+           endTime={d[findIndex].endTime}
+           phoneNum={d[findIndex].phoneNum}
+           swipe={this.props.swipe}
+           action={this.props.action}
+         />)
+        } else {
+          list = list.concat(<ListBox key={i} index={i+1} swipe={this.props.swipe} action={this.props.action}/>)
+        }
       }
       return list;
     }
