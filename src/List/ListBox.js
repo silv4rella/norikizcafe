@@ -6,6 +6,24 @@ import Store from "../store.js";
 
 class ListBox extends Component {
 
+
+subInfo = (val) =>
+{
+  if (val) {
+    return (
+      <div className="BoxButton_TitleBox">
+        <div className="BoxButtonText_Title">{this.props.index}</div>
+        <div className="BoxButtonText_etc1">{this.props.name ? this.props.name : '-'}</div>
+        <div className="BoxButtonText_etc2">{this.props.startTime ? this.props.startTime : '-'}</div>
+      </div>
+    );
+  } else {
+    return (
+        <div className="BoxButton_TitleBox_text">{this.props.index}</div>
+    );
+  }
+}
+
   render() {
     return (
 
@@ -15,11 +33,8 @@ class ListBox extends Component {
               className={this.props.useSlotNum ? "BoxButton_used" : "BoxButton_unUsed" }
               value={this.props.phoneNum}
               onClick={()=>{
-                this.props.swipe();
-                store.updateValue("log", this.props.index);
-                store.updateValue("index", this.props.index);
                 this.props.useSlotNum ?
-                store.updateValue("log", this.props.listIndex) :
+                store.updateValue("loginCustomerNum", this.props.listIndex) :
                 store.addUser_UseCafe({
                     useSlotNum : this.props.index,
                     customerNum : '',
@@ -27,12 +42,11 @@ class ListBox extends Component {
                     startTime: Moment(new Date()).format('HH:mm:ss'),
                     endTime:'00:00:00',
                     phoneNum: store.state.phoneNum,
-                });
+                }, store.state.listData.length);
+                this.props.swipe();
               }}
             >
-              <div className="BoxButtonText_Title">{this.props.index}</div>
-              <div className="BoxButtonText_etc1">{this.props.name ? this.props.name : '-'}</div>
-              <div className="BoxButtonText_etc2">{this.props.startTime ? this.props.startTime : '-'}</div>
+              {this.subInfo(this.props.useSlotNum)}
             </button>
           )}
         </Store.Consumer>

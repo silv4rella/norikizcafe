@@ -9,35 +9,42 @@ import List from'./List/List.js';
 
 class App extends Component {
 
-listPageMaxCount = 30;
+  listPageMaxCount = 49;
+  listBoxCount = 150;
 
+  init = false;
 
-state = {
- index: 1,
-}
+  state = {
+   index: 1,
+  }
 
   handleChangeIndex = index => {
     this.setState({
       index : index
     });
+    if (index === 1 ) {
+      this.init = true;
+    }
+    else {
+      this.init = false;
+    }
   };
 
-  handleClick0 = index => {
+  handleSetIndex0 = index => {
     this.setState({
       index: 0
     });
   };
-  handleClick1 = index => {
+  handleSetIndex1 = index => {
     this.setState({
       index: 1
     });
   };
-  handleClick2 = index => {
+  handleSetIndex2 = index => {
     this.setState({
       index: 2
     });
   };
-
 
   render() {
     const { index } = this.state;
@@ -45,15 +52,19 @@ state = {
     return (
       <Store.Consumer>
         {store => {
-          if (index === 1 ) {
+          if (this.init === true ) {
             store.stateClear();
+            this.init = false;
+          }
+          else {
+            this.init = false;
           }
           return (
           <div className="swipe-wrap">
             <SwipeableViews index={index} onChangeIndex={this.handleChangeIndex} enableMouseEvents >
-              <div> <Info swipe={this.handleClick1} /> </div>
-              <div> <Main swipe={this.handleClick0} start={this.handleClick2} /> </div>
-              <div> <List swipe={this.handleClick0} listPageMaxCount={this.listPageMaxCount} /> </div>
+              <div> <Info swipe={this.handleSetIndex1} /> </div>
+              <div> <Main swipe={this.handleSetIndex0} start={this.handleSetIndex2} /> </div>
+              <div> <List swipe={this.handleSetIndex0} listPageMaxCount={this.listPageMaxCount} listBoxCount={this.listBoxCount} /> </div>
             </SwipeableViews>
           </div>
         )}}

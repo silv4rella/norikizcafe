@@ -4,12 +4,12 @@ import Store from "./store.js";
 
 class AppContainer extends Component {
   state = {
-    index:'null',
-    name:'null',
-    startTime:'null',
-    endTime:'null',
-    phoneNum:'null',
-    log: null,
+    index: null,
+    name: null,
+    startTime: null,
+    endTime: null,
+    phoneNum: null,
+    loginCustomerNum: null,
     listData: [
       {
         useSlotNum : 1,
@@ -50,13 +50,12 @@ class AppContainer extends Component {
     this.setState({[key]: val});
   }
 
-  addUser_UseCafe = (val) => {
+  addUser_UseCafe = (val1,val2) => {
     this.setState({
-      listData: this.state.listData.concat(val),
-      log:this.state.listData.length
+      listData: this.state.listData.concat(val1),
+      loginCustomerNum:val2
     });
 
-    this.stateClear();
   }
 
   stateClear = () => {
@@ -66,16 +65,17 @@ class AppContainer extends Component {
       startTime: null,
       endTime: null,
       phoneNum: null,
-      log: null,
+      loginCustomerNum: null,
     });
     console.log('stateClear');
   }
 
   curUser = () =>{
-      if(this.state.log !== null){
-        return this.state.listData[this.state.log];
+      if(this.state.loginCustomerNum !== null){
+        return this.state.listData[this.state.loginCustomerNum];
       }
       else {
+        console.log('curUser null');
         return null;
       }
   }

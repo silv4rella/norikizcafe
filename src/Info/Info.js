@@ -10,6 +10,7 @@ class Info extends Component {
 
     return (
         <div className="info">
+          <div className="titleBar">정보</div>
           <div className="infoView1">
             <Store.Consumer>
               {store => {return (
@@ -20,10 +21,12 @@ class Info extends Component {
                 </div>
               )}}
             </Store.Consumer>
-          </div>
-          <div className="infoView2">
+            <div className="infoView2">
+            infoView2
+            </div>
           </div>
           <div className="infoView3">
+          infoView3
           </div>
           <button className="nextButton" value="1" onClick={this.props.swipe}>▶</button>
         </div>

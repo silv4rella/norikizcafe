@@ -1,23 +1,40 @@
 .info {
     flex-direction: column;
-    min-height: 98vh;
-    max-height: 100vh;
+    min-height: 100%;
+    max-height: 100%;
+}
+
+.titleBar{
+    width: 100%;
+    min-height: 10%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: rgb(70, 200, 195);
+    color: white;
+    font-size: calc(10px + 2vmin);
 }
 
 .infoView1 {
   float: left;
+  top: 0px;
   left: 0px;
-  width: 50%;
-  min-height: 100vh;
+  width: 60%;
+  min-height: 90%;
+  padding-top: 10px;
+  padding-bottom: 10px;
 	/* border: 1px dotted Orange; */
   background-color: rgba(255,255,0,0.3);
 }
 
 .infoView2 {
-  float: right;
-  width: 50%;
-  top: 0px;
-  min-height: 38vh;
+  float: left;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  min-height: 60%;
+  padding-top: 10px;
+  padding-bottom: 10px;
 	/* border: 1px dotted green; */
   background-color: rgba(0,255,0,0.3);
 }
@@ -26,8 +43,10 @@
   float: right;
   right: 0px;
   bottom: 0px;
-  width: 50%;
-  min-height: 62vh;
+  width: 40%;
+  min-height: 90%;
+  padding-top: 10px;
+  padding-bottom: 10px;
 	/* border: 1px dotted black; */
   background-color: rgba(0,0,0,0.3);
 }
