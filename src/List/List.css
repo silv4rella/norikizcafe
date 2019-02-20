@@ -2,6 +2,7 @@
   background-color: rgba(255,255,0,0.3);
   width: 100%;
   min-height: 100%;
+  max-height: 100%;
 }
 
 .listView {
@@ -41,18 +42,24 @@
   width: 12%;
   min-height: 100%;
   text-align: center;
+  font-family: malgun;
+  font-weight: bold;
   font-size: calc(1px + 2vmin);
 }
 .titleNowCount{
   width: 12%;
   min-height: 100%;
   text-align: center;
+  font-family: malgun;
+  font-weight: bold;
   font-size: calc(1px + 2vmin);
 }
 .titleOutCount{
   width: 12%;
   min-height: 100%;
   text-align: center;
+  font-family: malgun;
+  font-weight: bold;
   font-size: calc(1px + 2vmin);
 }
 
@@ -62,6 +69,7 @@
   min-height: 100%;
   text-align: center;
   background-color: gray;
+  font-family: malgun;
   font-size: calc(5px + 2vmin);
 }
 
@@ -72,6 +80,8 @@
   text-align: center;
   background-color: rgb(70, 200, 195);
   color: white;
+  font-family: malgun;
+  font-weight: bold;
   font-size: calc(10px + 2vmin);
 }
 
@@ -114,6 +124,8 @@
 }
 
 .BoxButtonText_Title{
+  font-family: malgun;
+  font-weight: bold;
   font-size: calc(5px + 2vmin);
 }
 
@@ -121,14 +133,20 @@
 }
 
 .BoxButton_TitleBox_text{
+  font-family: malgun;
+  font-weight: bold;
   font-size: calc(5px + 2vmin);
 }
 
 .BoxButtonText_etc1{
+  font-family: malgun;
+  font-weight: bold;
   font-size: calc(5px + 1vmin);
 }
 
 .BoxButtonText_etc2{
+  font-family: malgun;
+  font-weight: bold;
   font-size: calc(5px + 1vmin);
 }
 

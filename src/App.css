@@ -1,6 +1,8 @@
 .App {
+  width: 100%;
+  min-height: 100%;
+  max-height: 100%;
 }
-
 
 .swipe-wrap {
   flex-direction: row;
@@ -27,4 +29,16 @@
 
 .App-link {
   color: #61dafb;
+}
+
+:root {
+    --MainColor1:rgb(255, 235, 130);
+    --MainColor2:rgb(255, 145, 40);
+    --MainColor3:rgb(70, 200, 195);
+    --SubColor1:rgb(255, 250, 220);
+    --SubColor2:rgb(250, 110, 45);
+    --SubColor3:rgb(0, 140, 125);
+    --SubColor4:rgb(130, 45, 30);
+    --SubColor5:rgb(199, 212, 226);
+    --TextColor1:rgb(65, 64, 66);
 }

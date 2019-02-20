@@ -1,5 +1,4 @@
-.App {
-}
+
 
 .View1 {
   float: left;
@@ -34,7 +33,7 @@
   width: 100%;
   height: 100vh;
 }
-
+/*
 .prevButton {
   position: absolute;
   display: inline-block;
@@ -53,11 +52,11 @@
 }
 
 .prevButton:hover {
-  background-color: rgba(255,255,255,0.5); /* Green */
+  background-color: rgba(255,255,255,0.5);  Green
   color: white;
   font-size: 40px;
 }
-
+*/
 .mainCountView{
   position: absolute;
   display: flex;
@@ -73,6 +72,8 @@
 .mainTodayCount{
   min-height: 100%;
   text-align: center;
+  font-family: malgun;
+  font-weight: bold;
   font-size: calc(5px + 2vmin);
   margin-left: 2%;
   margin-right: 2%;
@@ -80,6 +81,8 @@
 .mainNowCount{
   min-height: 100%;
   text-align: center;
+  font-family: malgun;
+  font-weight: bold;
   font-size: calc(5px + 2vmin);
   margin-left: 2%;
   margin-right: 2%;
@@ -87,6 +90,8 @@
 .mainOutCount{
   min-height: 100%;
   text-align: center;
+  font-family: malgun;
+  font-weight: bold;
   font-size: calc(5px + 2vmin);
   margin-left: 2%;
   margin-right: 2%;
@@ -98,6 +103,8 @@ input[type=number] {
   align-items: flex-end;
   justify-content: flex-end;
   text-align: center;
+  font-family: malgun;
+  font-weight: bold;
   font-size: 40px;
   box-sizing: border-box;
   border-left: 3px solid rgb(255, 145, 40);
@@ -113,6 +120,8 @@ input[type=number] {
   color: white;
   text-align: center;
   text-decoration: none;
+  font-family: malgun;
+  font-weight: bold;
   font-size: calc(1px + 4vmin);
   cursor: pointer;
 }
@@ -126,6 +135,8 @@ input[type=number] {
   color: white;
   text-align: center;
   text-decoration: none;
+  font-family: malgun;
+  font-weight: bold;
   font-size: calc(1px + 4vmin);
   cursor: pointer;
 }
@@ -139,6 +150,8 @@ input[type=number] {
   color: black;
   text-align: center;
   text-decoration: none;
+  font-family: malgun;
+  font-weight: bold;
   font-size: calc(1px + 6vmin);
   cursor: pointer;
 }

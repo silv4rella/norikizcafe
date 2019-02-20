@@ -6,6 +6,7 @@ class AppContainer extends Component {
   state = {
     index: null,
     name: null,
+    day:'1900-01-01',
     startTime: null,
     endTime: null,
     phoneNum: null,
@@ -15,33 +16,69 @@ class AppContainer extends Component {
         useSlotNum : 1,
         customerNum : 10000001,
         name:'노리',
+        day:'1900-01-01',
         startTime:'00:00:00',
         endTime:'00:00:00',
         phoneNum:'010-1111-1111',
+        child:[
+          {
+            name:'노리11',
+            day:'1900-01-01',
+          },
+          {
+            name:'노리12',
+            day:'1900-01-01',
+          }
+        ],
       },
       {
         useSlotNum : 4,
         customerNum : 10000002,
         name:'베가스',
+        day:'1900-01-01',
         startTime:'00:00:00',
         endTime:'00:00:00',
         phoneNum:'010-2222-2222',
+        child:[
+          {
+            name:'베가스11',
+            day:'1900-01-01',
+          },
+          {
+            name:'베가스12',
+            day:'1900-01-01',
+          }
+        ],
       },
       {
         useSlotNum : 3,
         customerNum : 10000003,
         name:'지니',
+        day:'1900-01-01',
         startTime:'00:00:00',
         endTime:'00:00:00',
         phoneNum:'010-3333-3333',
+        child:[
+          {
+            name:'지니11',
+            day:'1900-01-01',
+          },
+        ],
       },
       {
         useSlotNum : 12,
         customerNum : 10000004,
         name:'해리포터',
+        day:'1900-01-01',
         startTime:'00:00:00',
         endTime:'00:00:00',
         phoneNum:'010-4444-4444',
+        child:[
+          {
+            name:'해리포터11',
+            day:'1900-01-01',
+          },
+        ],
       }
     ],
   }
@@ -62,6 +99,7 @@ class AppContainer extends Component {
     this.setState({
       index: null,
       name: null,
+      day:'1900-01-01',
       startTime: null,
       endTime: null,
       phoneNum: null,
@@ -75,8 +113,15 @@ class AppContainer extends Component {
         return this.state.listData[this.state.loginCustomerNum];
       }
       else {
-        console.log('curUser null');
-        return null;
+        return {
+          index: null,
+          name: null,
+          day:'1900-01-01',
+          startTime: null,
+          endTime: null,
+          phoneNum: null,
+          loginCustomerNum: null,
+        };
       }
   }
 

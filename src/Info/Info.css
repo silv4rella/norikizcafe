@@ -1,56 +1,487 @@
+
 .info {
     flex-direction: column;
-    min-height: 100%;
-    max-height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    max-height: 100vh;
+    background-color: var(--MainColor1);
 }
 
 .titleBar{
+    display: flex;
     width: 100%;
-    min-height: 10%;
+    min-height: 7vh;
+    max-height: 7vh;
     padding-top: 10px;
     padding-bottom: 10px;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     background-color: rgb(70, 200, 195);
     color: white;
+    font-family: malgun;
+    font-weight: bold;
     font-size: calc(10px + 2vmin);
 }
 
-.infoView1 {
+.infoScrollView {
   float: left;
   top: 0px;
   left: 0px;
-  width: 60%;
-  min-height: 90%;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  width: 56%;
+  min-height: 90vh;
+  max-height: 90vh;
+  margin:auto;
 	/* border: 1px dotted Orange; */
-  background-color: rgba(255,255,0,0.3);
+  box-sizing: border-box;
+  border: calc(5px + 1vmin) solid var(--MainColor1);
+  background-color: white;
 }
 
-.infoView2 {
+.infoScrollView_Content{
+  min-height: 100%;
+  max-height: 500%;
+  margin:auto;
+}
+
+.infoUserView {
+  float: left;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  min-height: 100%;
+  background-color: white;
+}
+
+.userInfoView{
+  flex-direction: row;
+  margin: auto;
+  width: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  margin-bottom: 2%;
+}
+
+.userInfoView_titleView{
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--SubColor1);
+}
+
+.userInfoView_title{
+  flex: 1;
+  top:0;
+  text-align: center;
+  font-family: malgun;
+  font-weight: bold;
+  font-size: calc(5px + 2vmin);
+  color: var(--TextColor1);
+}
+
+.userInfoView_print{
+  right: calc(1px + 5vmin);
+  width: calc(5px + 12vmin);
+  min-height: 95%;
+  font-family: malgun;
+  font-size: calc(5px + 2vmin);
+  color: white;
+  text-align: center;
+  padding-top: calc(1px + 1vmin);
+  padding-bottom: calc(1px + 1vmin);
+  border-radius: 15px;
+  background-color: gray;
+  cursor: pointer;
+}
+
+.userInfoView_sub1{
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.userInfo_line{
+  display: flex;
+  height: 7vh;
+  align-items: center;
+  justify-content: left;
+}
+
+.userInfo_line1{
+  width: 11%;
+  text-align: center;
+  color: var(--TextColor1);
+  font-family: malgun;
+  font-weight: bold;
+  font-size: calc(4px + 2vmin);
+}
+.userInfo_line2{
+  width: 23%;
+  text-align: center;
+  border-radius: 10px;
+  box-sizing: border-box;
+  border: 2px solid black;
+  padding-top: calc(1px + 1vmin);
+  padding-bottom: calc(1px + 1vmin);
+  margin-right: calc(1px + 1vmin);
+  color: var(--TextColor1);
+  font-family: malgun;
+  font-weight: bold;
+  font-size: calc(1px + 2vmin);
+}
+.userInfo_line3{
+  width: 28%;
+  text-align: left;
+  border-radius: 10px;
+  box-sizing: border-box;
+  border: 2px solid black;
+  padding-left: calc(1px + 2vmin);
+  padding-top: calc(1px + 1vmin);
+  padding-bottom: calc(1px + 1vmin);
+  margin-right: calc(1px + 1vmin);
+  color: var(--TextColor1);
+  font-family: malgun;
+  font-weight: bold;
+  font-size: calc(1px + 2vmin);
+}
+.userInfo_line4{
+  width: 31%;
+  text-align: left;
+  border-radius: 10px;
+  box-sizing: border-box;
+  border: 2px solid black;
+  padding-left: calc(1px + 2vmin);
+  padding-top: calc(1px + 1vmin);
+  padding-bottom: calc(1px + 1vmin);
+  margin-right: calc(1px + 1vmin);
+  color: var(--TextColor1);
+  font-family: malgun;
+  font-weight: bold;
+  font-size: calc(1px + 2vmin);
+}
+
+.infoInventoryView {
   float: left;
   left: 0px;
   bottom: 0px;
   width: 100%;
   min-height: 60%;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin-bottom: 2%;
 	/* border: 1px dotted green; */
-  background-color: rgba(0,255,0,0.3);
 }
 
-.infoView3 {
-  float: right;
-  right: 0px;
-  bottom: 0px;
-  width: 40%;
-  min-height: 90%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-	/* border: 1px dotted black; */
-  background-color: rgba(0,0,0,0.3);
+.infoInventoryView_titleView{
+  flex-direction: row;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  background-color: var(--SubColor1);
 }
 
+.infoInventoryView_title{
+  top:0;
+  min-height: 95%;
+  padding-top: calc(1px + 1vmin);
+  padding-bottom: calc(1px + 1vmin);
+  text-align: center;
+  font-family: malgun;
+  font-weight: bold;
+  font-size: calc(5px + 2vmin);
+  color: var(--TextColor1);
+}
+
+.itemList{
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 95%;
+  min-height: 45vh;
+  margin-bottom: 4%;
+}
+
+.itemRow{
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  min-width: calc(100%/3);
+  min-height: 100%;
+  max-height: 100%;
+  color: black;
+  font-family: malgun;
+  font-weight: bold;
+  font-size: calc(5px + 2vmin);
+}
+
+.itemTitle{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5vh;
+  text-align: center;
+  font-family: malgun;
+  font-weight: bold;
+  font-size: calc(5px + 2vmin);
+  color: var(--TextColor1);
+}
+
+.itemColumn{
+  display: flex;
+  align-items: center;
+  height: 5vh;
+}
+
+.item_border-bottom{
+  box-sizing: border-box;
+  border-bottom: 3px solid var(--SubColor1);
+}
+
+.item_border-right{
+  box-sizing: border-box;
+  border-right: 3px solid var(--SubColor1);
+}
+
+.item_border-left{
+  box-sizing: border-box;
+  border-right: 3px solid var(--SubColor1);
+}
+
+.iteminfofront{
+  padding-left: 3vh;
+  flex: 0.8;
+  text-align:left;
+  color: var(--TextColor1);
+  font-family: malgun;
+  font-weight: lighter;
+  font-size: calc(5px + 2vmin);
+}
+
+.iteminfoback{
+  flex: 0.2;
+  text-align:center;
+  color: var(--SubColor2);
+  font-family: malgun;
+  font-weight: bold;
+  font-size: calc(5px + 2vmin);
+}
+
+.countView {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  width: 44%;
+  min-height: 90vh;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  box-sizing: border-box;
+  border: 0 none gray;
+  border-top: calc(5px + 1vmin) solid var(--MainColor1);
+  border-bottom: calc(5px + 1vmin) solid var(--MainColor1);
+  border-right: calc(5px + 1vmin) solid var(--MainColor1);
+  background-color: var(--MainColor1);
+}
+
+.countViewPerson{
+  width: 100%;
+  min-height: 23.5vh;
+  max-height: 23.5vh;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  box-sizing: border-box;
+  border: 0 none gray;
+  background-color: white;
+
+}
+
+.countViewPersonImage{
+  border: none;
+  width: 50%;
+}
+
+.Image_border-left{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  border: 0 none gray;
+  border-left: 2px solid var(--MainColor1);
+}
+
+.Image_border-right{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  border: 0 none gray;
+  border-right: 2px solid var(--MainColor1);
+}
+
+.countViewPersonButton{
+  width: 100%;
+  min-height: 100%;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  background-color: white;
+}
+
+.countViewButton{
+  display: inline-block;
+  width: 25%;
+  min-height: 20%;
+  max-height: 20%;
+  box-sizing: border-box;
+  border: 0 none gray;
+  cursor: pointer;
+  background-color: white;
+}
+
+.countViewButtonImage{
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  width: 100%;
+  color: var(--MainColor1);
+}
+
+.countViewButtonImage:hover{
+  -webkit-filter: saturate(10);
+  filter: saturate(10);
+}
+
+.countViewButtonImage:active{
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.button_border-left{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  border-left: 2px solid white;
+}
+
+.button_border-right{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  border-right: 2px solid white;
+}
+
+.numberView{
+  display: flex;
+  width: 100%;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  box-sizing: border-box;
+  background-color: white;
+  border: 0 none gray;
+}
+
+.numberView_textbox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  min-height: 21.5vh;
+  max-height: 21.5vh;
+}
+
+.numberView_text{
+  border: none;
+  color: var(--MainColor3);
+  text-align: center;
+  font-family: malgun;
+  font-weight: bold;
+  font-size: calc(1px + 10vmin);
+}
+
+.numberView_border-left{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  border: 0 none gray;
+  border-left: 2px solid var(--MainColor1);
+}
+
+.numberView_border-right{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  border: 0 none gray;
+  border-right: 2px solid var(--MainColor1);
+}
+
+.ticketButtonView{
+  display: flex;
+  width: 100%;
+  min-height: 13vh;
+  max-height: 13vh;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+}
+
+.ticketButtonView_border1{
+  margin: 0px;
+  padding: 0px;
+  border-top: calc(5px + 1vmin) solid var(--MainColor1);
+}
+
+.ticketButtonView_border2{
+  margin: 0px;
+  padding: 0px;
+  border-top: 4px solid var(--MainColor1);
+}
+
+.ticketButton{
+  display: inline-block;
+  width: 50%;
+  min-height: 50%;
+  max-height: 50%;
+  box-sizing: border-box;
+  border: 0 none gray;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-family: malgun;
+  font-weight: bold;
+  font-size: calc(4px + 2vmin);
+}
+
+.ticketButton:hover{
+  background-color: var(--SubColor5);
+}
+
+.ticketButton:active{
+  background-color: var(--SubColor4);
+}
+
+.ticketButton_type1{
+    background-color: var(--SubColor2);
+}
+.ticketButton_type2{
+    background-color: var(--MainColor2);
+}
+.ticketButton_type3{
+    background-color: var(--SubColor3);
+}
+.ticketButton_type4{
+    background-color: var(--MainColor3);
+}
+
+.ticketButtonView_border-left{
+  margin: 0px;
+  padding: 0px;
+  border-left: 2px solid var(--MainColor1);
+}
+
+.ticketButtonView_border-right{
+  margin: 0px;
+  padding: 0px;
+  border-right: 2px solid var(--MainColor1);
+}
+
+/*
 .nextButton {
   position: absolute;
   display: inline-block;
@@ -69,19 +500,11 @@
 }
 
 .nextButton:hover {
-  background-color: rgba(255,255,255,0.5); /* Green */
+  background-color: rgba(255,255,255,0.5);
   color: white;
   font-size: 40px;
 }
-
-.userInfoView{
-  flex-direction: row;
-  margin: auto;
-  width: 80%;
-  min-height: 40vh;
-	/* border: 1px dotted Orange; */
-  background-color: rgba(0,0,255,0.3);
-}
+*/
 
 
 .label{
@@ -91,6 +514,7 @@
   margin-left: 5px;
   margin-right: 5px;
   background-color: rgba(0,0,0,0.3);
+  box-sizing: border-box;
   border: 1px solid white;
   color: black;
   text-align: left;

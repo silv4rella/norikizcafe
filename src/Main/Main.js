@@ -29,7 +29,7 @@ clear = (e) => {
       <div>
         <div className="View1">
           <img src={logo} className="App-logo" alt="login1"/>
-          <button className="prevButton" onClick={this.props.swipe}>◀</button>
+          /*<button className="prevButton" onClick={this.props.swipe}>◀</button>*/
           <div className="mainCountView">
             <div className="mainTodayCount">
               <div>Today</div>
