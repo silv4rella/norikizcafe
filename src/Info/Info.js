@@ -44,7 +44,10 @@ curUserData = () =>
             <div className="infoUserView">
               <div className="userInfoView">
                 <div className="userInfoView_titleView">
-                  <div className="userInfoView_title">고객정보</div>
+                  <div className="userInfoView_dumy"></div>
+                  <div className="userInfoView_title">
+                    고객정보
+                  </div>
                   <button className="userInfoView_print" onClick={()=>console.log("print")}>print</button>
                 </div>
                 {this.curUserData()}
@@ -89,7 +92,7 @@ curUserData = () =>
               <button className="ticketButton ticketButton_type4 ticketButtonView_border-left" >일반 입장</button>
             </div>
           </div>
-          /*<button className="nextButton" value="1" onClick={this.props.swipe}>▶</button>*/
+          {/*<button className="nextButton" value="1" onClick={this.props.swipe}>▶</button>*/}
         </div>
     );
   }

@@ -68,10 +68,12 @@
   align-items: center;
   justify-content: center;
   background-color: var(--SubColor1);
+  min-height: 7vh;
 }
 
 .userInfoView_title{
-  flex: 1;
+  display: inline-block;
+  margin:0 auto;
   top:0;
   text-align: center;
   font-family: malgun;
@@ -80,17 +82,27 @@
   color: var(--TextColor1);
 }
 
-.userInfoView_print{
-  right: calc(1px + 5vmin);
+.userInfoView_dumy{
+  float: left;
+  left: calc(1px + 5vmin);
   width: calc(5px + 12vmin);
-  min-height: 95%;
+  min-height: 90%;
+  margin-left: 3vmin;
+}
+
+.userInfoView_print{
+  float: right;
+  width: calc(5px + 12vmin);
+  min-height: 90%;
   font-family: malgun;
-  font-size: calc(5px + 2vmin);
+  font-size: calc(4px + 2vmin);
   color: white;
   text-align: center;
-  padding-top: calc(1px + 1vmin);
-  padding-bottom: calc(1px + 1vmin);
-  border-radius: 15px;
+  padding-top: 0.7vmin;
+  padding-bottom: 0.7vmin;
+  margin-right: 3vmin;
+  border-radius: 10px;
+  border: 0 none gray;
   background-color: gray;
   cursor: pointer;
 }

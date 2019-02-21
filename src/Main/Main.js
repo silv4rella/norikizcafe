@@ -24,12 +24,21 @@ clear = (e) => {
   })
 }
 
+handleKeyPress = (event) => {
+  console.log(event.key);
+  const re = /^[0-9\b]+$/;
+  if (re.test(event.key)) {
+    this.setState({
+      pn: (this.state.pn === null ? '' : this.state.pn) + event.key
+    })
+  }
+}
   render() {
     return (
       <div>
         <div className="View1">
           <img src={logo} className="App-logo" alt="login1"/>
-          /*<button className="prevButton" onClick={this.props.swipe}>◀</button>*/
+          {/*<button className="prevButton" onClick={this.props.swipe}>◀</button>*/}
           <div className="mainCountView">
             <div className="mainTodayCount">
               <div>Today</div>
@@ -46,11 +55,16 @@ clear = (e) => {
           </div>
         </div>
         <div className="View2">
+          <div className="privacyPolicy">*이용약관과 개인정보취급방침에 동의하시면 전화번호를 입력하시고 입장해주세요.</div>
           <input
-            type="number"
+            type="number" pattern="[0-9]*"
             id="phonenum"
             name="phonenum"
-            readOnly value={this.state.pn ? this.state.pn : ''}/>
+            readOnly
+            placeholder="연락처를 입력하세요"
+            onKeyPress={this.handleKeyPress}
+            value={this.state.pn ? this.state.pn : ''}
+          />
         </div>
         <div className="View3">
           <button className="button3" value="7" onClick={this.input1}>7</button>
