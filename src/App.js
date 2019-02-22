@@ -63,7 +63,7 @@ class App extends Component {
           <div className="swipe-wrap">
             <SwipeableViews index={index} onChangeIndex={this.handleChangeIndex} enableMouseEvents >
               <div> <Info swipe={this.handleSetIndex1} /> </div>
-              <div> <Main swipe={this.handleSetIndex0} start={this.handleSetIndex2} /> </div>
+              <div> <Main swipe={this.handleSetIndex0} start={this.handleSetIndex2} ref={ref => {this.container = ref;}} /> </div>
               <div> <List swipe={this.handleSetIndex0} listPageMaxCount={this.listPageMaxCount} listBoxCount={this.listBoxCount} /> </div>
             </SwipeableViews>
           </div>

@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
+import Portal from '@material-ui/core/Portal';
 import logo from '../image/login1.jpg';
 import './Main.css';
 
+import PrivacyPolicyView from "./PrivacyPolicyView.js"
 import Store from "../store.js";
 
 class Main extends Component {
+  constructor() {
+    super();
+    this.state = {
+        pn: '',
+        swipe:'',
+        start:'',
+        showPopup: false,
+    };
+  }
 
-state = {
-    pn: '',
-    swipe:'',
-    start:''
+togglePopup() {
+  this.setState({
+    showPopup: !this.state.showPopup
+  });
 }
 
 input1 = (e) => {
@@ -55,7 +66,9 @@ handleKeyPress = (event) => {
           </div>
         </div>
         <div className="View2">
-          <div className="privacyPolicy">*이용약관과 개인정보취급방침에 동의하시면 전화번호를 입력하시고 입장해주세요.</div>
+          <button className="privacyPolicy" onClick={this.togglePopup.bind(this)}>
+            *이용약관과 개인정보취급방침에 동의하시면 전화번호를 입력하시고 입장해주세요.
+          </button>
           <input
             type="number" pattern="[0-9]*"
             id="phonenum"
@@ -93,6 +106,15 @@ handleKeyPress = (event) => {
             )}
           </Store.Consumer>
         </div>
+        {this.state.showPopup ?
+          <Portal container={this.container}>
+            <PrivacyPolicyView
+              text='Close Me'
+              closePopup={this.togglePopup.bind(this)}
+            />
+          </Portal>
+          : null
+        }
       </div>
     );
   }
