@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import ScrollArea from 'react-scrollbar';
-
+import TicketPurchaseView from './TicketPurchaseView.js';
 import './Info.css';
 
 import Store from "../store.js";
 import UserInfo from "./UserInfo.js";
 import Inventory from "./Inventory.js";
+import Portal from '@material-ui/core/Portal';
 
 import img_parent from '../image/parent.jpg';
 import img_child from '../image/child.jpg';
@@ -13,6 +14,19 @@ import img_plus from '../image/plus.jpg';
 import img_minus from '../image/minus.jpg';
 
 class Info extends Component {
+
+constructor() {
+  super();
+  this.state = {
+      show_ticketPurchase: false,
+  };
+}
+
+ticketPurchasePopup() {
+  this.setState({
+    show_ticketPurchase: !this.state.show_ticketPurchase
+  });
+}
 
 curUserData = () =>
 {
@@ -63,16 +77,16 @@ curUserData = () =>
             </div>
             <div className="countViewPersonButton">
               <button className="countViewButton button_border-right">
-                <img src={img_minus} className="countViewButtonImage" alt="img_parent_add"/>
+                <img src={img_minus} className="countViewButtonImage" alt="img_parent_sub"/>
               </button>
               <button className="countViewButton button_border-left button_border-right">
-                <img src={img_plus} className="countViewButtonImage" alt="img_parent_sub"/>
+                <img src={img_plus} className="countViewButtonImage" alt="img_parent_add"/>
               </button>
               <button className="countViewButton button_border-left button_border-right">
-                <img src={img_minus} className="countViewButtonImage" alt="img_child_add"/>
+                <img src={img_minus} className="countViewButtonImage" alt="img_child_sub"/>
               </button>
               <button className="countViewButton button_border-left">
-                <img src={img_plus} className="countViewButtonImage" alt="img_child_sub"/>
+                <img src={img_plus} className="countViewButtonImage" alt="img_child_add"/>
               </button>
             </div>
             <div className="numberView">
@@ -84,7 +98,7 @@ curUserData = () =>
               </div>
             </div>
             <div className="ticketButtonView ticketButtonView_border1">
-              <button className="ticketButton ticketButton_type1 ticketButtonView_border-right" >정기권 발행</button>
+              <button className="ticketButton ticketButton_type1 ticketButtonView_border-right" onClick={this.ticketPurchasePopup.bind(this)}>정기권 발행</button>
               <button className="ticketButton ticketButton_type2 ticketButtonView_border-left" >퇴장</button>
             </div>
             <div className="ticketButtonView ticketButtonView_border2">
@@ -93,6 +107,15 @@ curUserData = () =>
             </div>
           </div>
           {/*<button className="nextButton" value="1" onClick={this.props.swipe}>▶</button>*/}
+          {this.state.show_ticketPurchase ?
+            <Portal container={this.container}>
+              <TicketPurchaseView
+                text='Close Me'
+                closePopup={this.ticketPurchasePopup.bind(this)}
+              />
+            </Portal>
+            : null
+          }
         </div>
     );
   }

@@ -11,6 +11,14 @@ class AppContainer extends Component {
     endTime: null,
     phoneNum: null,
     loginCustomerNum: null,
+    usedCount:{
+      today_parent:0,
+      today_child:0,
+      now_parent:0,
+      now_out:0,
+      out_parent:0,
+      out_out:0
+    },
     listData: [
       {
         useSlotNum : 1,
