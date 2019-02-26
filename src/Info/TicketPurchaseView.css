@@ -41,29 +41,6 @@
   color: white;
 }
 
-.ticketPurchase_dumy{
-  float: left;
-  left: calc(1px + 5vmin);
-  width: calc(5px + 12vmin);
-  min-height: 90%;
-  margin-left: 3vmin;
-}
-
-.ticketPurchase_Closebutton{
-  float: right;
-  width: calc(5px + 12vmin);
-  min-height: 90%;
-  font-family: malgun;
-  font-size: calc(1px + 5vmin);
-  color: white;
-  text-align: center;
-  margin-right: 3vmin;
-  border-radius: 10px;
-  border: 0 none gray;
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0);
-}
-
 .ticketPurchase_comments{
   display: flex;
   min-height: 87%;
@@ -98,6 +75,10 @@
   border-radius: 5px;
   color: black;
   background-color: rgba(0, 0, 0, 0);
+  font-family: malgun;
+  font-weight: bold;
+  font-size: calc(3px + 2vmin);
+  cursor: pointer;
 }
 
 .ticketPurchase_TypeButton-checked{
@@ -110,12 +91,10 @@
   border-radius: 5px;
   color: white;
   background-color: var(--MainColor3);
-}
-
-.ticketPurchase_TypeButton-text{
   font-family: malgun;
   font-weight: bold;
   font-size: calc(3px + 2vmin);
+  cursor: pointer;
 }
 
 .ticketPurchase_TypeControlView{
@@ -191,8 +170,25 @@
   font-family: malgun;
   font-weight: bold;
   font-size: calc(5px + 2vmin);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.buttonImage_plus{
   background-image: url(../image/plus2.jpg);
-  background-color: rgba(0, 0, 0, 0);
+}
+
+.buttonImage_plus:active{
+  background-image: url(../image/plus.jpg);
+}
+
+.buttonImage_minus{
+  background-image: url(../image/minus2.jpg);
+}
+
+.buttonImage_minus:active{
+  background-image: url(../image/minus.jpg);
 }
 
 .ticketPurchase_ticketCount-buttonImage{
@@ -205,6 +201,7 @@
 }
 
 .ticketPurchase_timeCountView{
+  flex-direction: column;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -213,4 +210,95 @@
   min-height: 50%;
   border: 0 none gray;
   box-sizing: border-box;
+}
+
+.ticketPurchase_timeCountLine1{
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  min-height: 30%;
+  max-height: 30%;
+  margin: auto;
+  border: 0 none gray;
+  box-sizing: border-box;
+  font-family: malgun;
+  font-weight: bold;
+  font-size: calc(2px + 2vmin);
+}
+
+.ticketPurchase_timeCountLine1_input[type=number] {
+  width: 16%;
+  text-align: center;
+  border-radius: 10px;
+  box-sizing: border-box;
+  border: 1px solid black;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: calc(1px + 1vmin);
+  margin-right: calc(1px + 1vmin);
+  color: var(--MainColor2);
+  font-family: malgun;
+  font-weight: bold;
+  font-size: calc(1px + 3vmin);
+}
+
+.ticketPurchase_timeCountLine2{
+  text-align: center;
+  width: 100%;
+  min-height: 30%;
+  max-height: 30%;
+  margin: auto;
+  border: 0 none gray;
+  box-sizing: border-box;
+  font-family: malgun;
+  font-weight: bold;
+  font-size: calc(2px + 2vmin);
+}
+
+.ticketPurchase_timeCountLine3{
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  min-height: 30%;
+  max-height: 30%;
+  margin: auto;
+  border: 0 none gray;
+  box-sizing: border-box;
+}
+
+.createTicketButton{
+  display: inline-block;
+  width: 45%;
+  min-height: 9vh;
+  max-height: 9vh;
+  margin: 0px 0px 0px 5px;
+  box-sizing: border-box;
+  border: 0 none gray;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-family: malgun;
+  font-size: calc(5px + 2vmin);
+  background-color: var(--MainColor3);
+}
+
+.cancelTicketButton{
+  display: inline-block;
+  width: 45%;
+  min-height: 9vh;
+  max-height: 9vh;
+  box-sizing: border-box;
+  border: 0 none gray;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-family: malgun;
+  font-size: calc(5px + 2vmin);
+  background-color: gray;
 }

@@ -212,7 +212,7 @@
   margin-right: 2%;
 }
 
-input[type=number] {
+.phonenum[type=number] {
   width: 100%;
   min-height: 20vh;
   padding-bottom: 5vh;

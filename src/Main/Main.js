@@ -70,7 +70,7 @@ handleKeyPress = (event) => {
           <button className="privacyPolicy" onClick={this.togglePopup.bind(this)}>
             *이용약관과 개인정보취급방침에 동의하시면 전화번호를 입력하시고 입장해주세요.
           </button>
-          <input
+          <input className="phonenum"
             type="number" pattern="[0-9]*"
             id="phonenum"
             name="phonenum"
