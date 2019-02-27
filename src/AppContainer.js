@@ -4,13 +4,14 @@ import Store from "./store.js";
 
 class AppContainer extends Component {
   state = {
-    index: null,
-    name: null,
-    day:'1900-01-01',
-    startTime: null,
-    endTime: null,
-    phoneNum: null,
-    loginCustomerNum: null,
+    instanceData: {
+      name: null,
+      day:'1900-01-01',
+      startTime: null,
+      endTime: null,
+      phoneNum: null,
+      loginCustomerNum: null,
+    },
     usedCount:{
       today_parent:0,
       today_child:0,
@@ -95,42 +96,57 @@ class AppContainer extends Component {
     this.setState({[key]: val});
   }
 
+  updateInstanceDataValue = (val) => {
+    this.setState({
+      instanceData:val
+    });
+  }
+
   addUser_UseCafe = (val1,val2) => {
     this.setState({
       listData: this.state.listData.concat(val1),
-      loginCustomerNum:val2
+      instanceData:{
+        name: null,
+        day:'1900-01-01',
+        startTime: val1.startTime,
+        endTime: null,
+        phoneNum: val1.phoneNum,
+        loginCustomerNum:val2,
+      }
     });
-
   }
 
   stateClear = () => {
     this.setState({
-      index: null,
-      name: null,
-      day:'1900-01-01',
-      startTime: null,
-      endTime: null,
-      phoneNum: null,
-      loginCustomerNum: null,
+      instanceData: {
+        name: null,
+        day:'1900-01-01',
+        startTime: null,
+        endTime: null,
+        phoneNum: null,
+        loginCustomerNum: null,
+      },
     });
-    console.log('stateClear');
   }
 
   curUser = () =>{
-      if(this.state.loginCustomerNum !== null){
-        return this.state.listData[this.state.loginCustomerNum];
-      }
-      else {
-        return {
-          index: null,
-          name: null,
-          day:'1900-01-01',
-          startTime: null,
-          endTime: null,
-          phoneNum: null,
-          loginCustomerNum: null,
-        };
-      }
+    if(this.state.instanceData.loginCustomerNum !== null){
+      return this.state.listData[this.state.instanceData.loginCustomerNum];
+    }
+    else {
+      return {
+        name: null,
+        day:'1900-01-01',
+        startTime: null,
+        endTime: null,
+        phoneNum: null,
+        loginCustomerNum: null,
+      };
+    }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+      return (JSON.stringify(nextProps) !== JSON.stringify(this.props));
   }
 
   render() {
@@ -138,6 +154,7 @@ class AppContainer extends Component {
       <Store.Provider value={{
           state: this.state,
           updateValue: this.updateValue,
+          updateInstanceDataValue: this.updateInstanceDataValue,
           addUser_UseCafe:this.addUser_UseCafe,
           curUser: this.curUser,
           stateClear: this.stateClear

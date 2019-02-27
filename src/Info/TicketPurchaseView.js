@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Moment from 'moment';
 
 import './TicketPurchaseView.css';
-import img_plus from '../image/plus2.jpg';
-import img_minus from '../image/minus2.jpg';
 
 class TicketPurchaseView extends Component {
   constructor(){

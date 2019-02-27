@@ -48,7 +48,7 @@ class List extends Component
     })
   }
 
-  createList(d, start, end) {
+  createList(d, pn, start, end) {
       var list = [];
       for (var i = start; i < end; i++) {
         var findIndex = -1;
@@ -67,7 +67,7 @@ class List extends Component
            action={this.props.action}
          />)
         } else {
-          list = list.concat(<ListBox key={i} index={i+1} swipe={this.props.swipe} action={this.props.action}/>)
+          list = list.concat(<ListBox key={i} index={i+1} useSlotNum={null} phoneNum={pn} swipe={this.props.swipe} action={this.props.action}/>)
         }
       }
       return list;
@@ -105,17 +105,17 @@ class List extends Component
                 <SwipeableViews index={index} onChangeIndex={this.handleChangeIndex} >
                   <div className="listBox">
                     <Store.Consumer>
-                      {store => (this.createList(store.state.listData, 49*0, 49*1))}
+                      {store => (this.createList(store.state.listData, store.state.instanceData.phoneNum, 49*0, 49*1))}
                     </Store.Consumer>
                   </div>
                   <div className="listBox">
                     <Store.Consumer>
-                      {store => (this.createList(store.state.listData, 49*1, 49*2))}
+                      {store => (this.createList(store.state.listData, store.state.instanceData.phoneNum, 49*1, 49*2))}
                     </Store.Consumer>
                   </div>
                   <div className="listBox">
                     <Store.Consumer>
-                      {store => (this.createList(store.state.listData, 49*2, 49*3))}
+                      {store => (this.createList(store.state.listData, store.state.instanceData.phoneNum, 49*2, 49*3))}
                     </Store.Consumer>
                   </div>
                 </SwipeableViews>

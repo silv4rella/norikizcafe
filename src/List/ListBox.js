@@ -33,15 +33,24 @@ subInfo = (val) =>
               className={this.props.useSlotNum ? "BoxButton_used" : "BoxButton_unUsed" }
               value={this.props.phoneNum}
               onClick={()=>{
-                this.props.useSlotNum ?
-                store.updateValue("loginCustomerNum", this.props.listIndex) :
+                this.props.useSlotNum !== null ?
+                store.updateInstanceDataValue({
+                  name: null,
+                  day:'1900-01-01',
+                  startTime: Moment(new Date()).format('HH:mm:ss'),
+                  endTime: null,
+                  phoneNum: this.props.phoneNum,
+                  loginCustomerNum:this.props.listIndex,
+                }) :
                 store.addUser_UseCafe({
                     useSlotNum : this.props.index,
                     customerNum : '',
                     name: this.props.name,
+                    day:'1900-01-01',
                     startTime: Moment(new Date()).format('HH:mm:ss'),
                     endTime:'00:00:00',
-                    phoneNum: store.state.phoneNum,
+                    phoneNum: this.props.phoneNum,
+                    child:null,
                 }, store.state.listData.length);
                 this.props.swipe();
               }}

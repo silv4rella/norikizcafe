@@ -191,15 +191,6 @@
   background-image: url(../image/minus.jpg);
 }
 
-.ticketPurchase_ticketCount-buttonImage{
-  padding: 2px 2px 2px 2px;
-  margin: 0px 0px 0px 0px;
-  width: 100%;
-  border: 0 none gray;
-  box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0);
-}
-
 .ticketPurchase_timeCountView{
   flex-direction: column;
   display: flex;

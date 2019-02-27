@@ -98,7 +98,14 @@ handleKeyPress = (event) => {
                       onClick={()=>{
                         this.props.start();
                         console.log(this.state.pn);
-                        store.updateValue("phoneNum", this.state.pn);
+                        store.updateInstanceDataValue({
+                          name: null,
+                          day:'1900-01-01',
+                          startTime: null,
+                          endTime: null,
+                          phoneNum: this.state.pn,
+                          loginCustomerNum: null,
+                        });
                         this.clear();
                       }}
               >

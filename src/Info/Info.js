@@ -49,7 +49,15 @@ curUserData = () =>
 
     return (
         <div className="info">
-          <div className="titleBar">정보</div>
+          <div className="titleBar">
+            <Store.Consumer>
+              {store => {return (
+                <div className="titleBar_phoneNum">{store.curUser().phoneNum ? store.curUser().phoneNum : '010-0000-0000'}</div>
+              )}}
+            </Store.Consumer>
+            <div className="titleBar_Text">정보</div>
+            <div className="titleBar_dumy"></div>
+          </div>
           <ScrollArea className="infoScrollView"
             speed={1}
             contentClassName="infoScrollView_Content"

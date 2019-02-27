@@ -45,7 +45,7 @@ class App extends Component {
       index: 2
     });
   };
-
+  
   render() {
     const { index } = this.state;
 

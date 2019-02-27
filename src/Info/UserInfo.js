@@ -9,13 +9,27 @@ userChildInfo = () =>{
     var componentList = [];
     var childList = this.props.userChildInfo;
     for (var i = 0; i < childList.length; i++) {
-      componentList = componentList.concat(
-        <div className="userInfo_line" key={i}>
-          <div className="userInfo_line1">{'아이'+(i+1)}</div>
-          <div className="userInfo_line2">{childList[i].name ? childList[i].name : 'null'}</div>
-          <div className="userInfo_line3">{childList[i].day ? childList[i].day : 'null'}</div>
-        </div>
-      )
+      if (i+1 < childList.length) {
+        componentList = componentList.concat(
+          <div className="userInfo_line" key={i}>
+            <div className="userInfo_line1">{'아이'+(i+1)}</div>
+            <div className="userInfo_line2">{childList[i].name ? childList[i].name : 'null'}</div>
+            <div className="userInfo_line3">{childList[i].day ? childList[i].day : 'null'}</div>
+            <button className="userInfo_add-button userInfoButtonImage_minus" onClick={()=>console.log('minus')}></button>
+          </div>
+        )
+      }
+      else {
+        componentList = componentList.concat(
+          <div className="userInfo_line" key={i}>
+            <div className="userInfo_line1">{'아이'+(i+1)}</div>
+            <div className="userInfo_line2">{childList[i].name ? childList[i].name : 'null'}</div>
+            <div className="userInfo_line3">{childList[i].day ? childList[i].day : 'null'}</div>
+            <button className="userInfo_add-button userInfoButtonImage_minus" onClick={()=>console.log('minus')}></button>
+            <button className="userInfo_add-button userInfoButtonImage_plus" onClick={()=>console.log('plus')}></button>
+          </div>
+        )
+      }
     }
     return componentList;
   } else {
@@ -24,6 +38,7 @@ userChildInfo = () =>{
         <div className="userInfo_line1">아이1</div>
         <div className="userInfo_line2">null</div>
         <div className="userInfo_line3">null</div>
+        <button className="userInfo_add-button userInfoButtonImage_plus" onClick={()=>console.log('plus')}></button>
       </div>
     );
   }
