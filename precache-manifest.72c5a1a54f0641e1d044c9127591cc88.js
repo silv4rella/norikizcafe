@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "/norikizcafe/static/media/minus.6399f01c.jpg"
   },
   {
-    "revision": "51dc4b66db1fb4b2380b",
-    "url": "/norikizcafe/static/css/main.e30f1e8c.chunk.css"
+    "revision": "8e42be61708effc388ce",
+    "url": "/norikizcafe/static/css/main.e2497f0a.chunk.css"
   },
   {
-    "revision": "a34c5172df5362171156",
-    "url": "/norikizcafe/static/js/1.a34c5172.chunk.js"
+    "revision": "f7a6e55ae3516b38133b",
+    "url": "/norikizcafe/static/js/1.f7a6e55a.chunk.js"
   },
   {
     "revision": "f7d44be3f634df680c48",
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/norikizcafe/static/media/plus.75fa7149.jpg"
   },
   {
-    "revision": "51dc4b66db1fb4b2380b",
-    "url": "/norikizcafe/static/js/main.51dc4b66.chunk.js"
+    "revision": "8e42be61708effc388ce",
+    "url": "/norikizcafe/static/js/main.8e42be61.chunk.js"
   },
   {
     "revision": "c1e52070dd979068cd8e84be37f7a625",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/norikizcafe/static/media/minus2.b6b16b3c.jpg"
   },
   {
-    "revision": "0074b51fff4e63bb8bbb369e36cd8e1c",
+    "revision": "1e9a555eb74721ca3fe2e0713d752eb7",
     "url": "/norikizcafe/index.html"
   }
 ];
