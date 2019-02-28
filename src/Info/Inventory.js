@@ -10,6 +10,9 @@ state = {
   stamp:0,
 }
 
+  shouldComponentUpdate(nextProps, nextState){
+    	return (JSON.stringify(nextProps) !== JSON.stringify(this.props));
+  }
   render() {
 
     return (

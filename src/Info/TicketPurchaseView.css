@@ -62,12 +62,11 @@
   box-sizing: border-box;
   border: 1px solid white;
   border-right: 1px solid black;
-  padding-right: 3%;
 }
 
 .ticketPurchase_TypeButton{
-  width: 46%;
-  min-height: 30%;
+  width: 15vh;
+  min-height: 15vh;
   margin: 2% 2% 2% 2%;
   border: 0 none gray;
   box-sizing: border-box;
@@ -82,8 +81,8 @@
 }
 
 .ticketPurchase_TypeButton-checked{
-  width: 46%;
-  min-height: 30%;
+  width: 15vh;
+  min-height: 15vh;
   margin: 2% 2% 2% 2%;
   border: 0 none gray;
   box-sizing: border-box;
@@ -161,7 +160,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  width: 18%;
+  width: 11vh;
   min-height: 11vh;
   max-height: 11vh;
   margin: 5% 1% 0% 1%;

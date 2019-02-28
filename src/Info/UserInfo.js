@@ -44,6 +44,10 @@ userChildInfo = () =>{
   }
 }
 
+  shouldComponentUpdate(nextProps, nextState){
+    	return (JSON.stringify(nextProps) !== JSON.stringify(this.props));
+  }
+
   render() {
 
     return (

@@ -12,7 +12,7 @@ class AppContainer extends Component {
       phoneNum: null,
       loginCustomerNum: null,
     },
-    usedCount:{
+    usedUserCount:{
       today_parent:0,
       today_child:0,
       now_parent:0,
@@ -20,7 +20,8 @@ class AppContainer extends Component {
       out_parent:0,
       out_out:0
     },
-    listData: [
+    usedUserListData:[],
+    dumy_usedUserListData: [
       {
         useSlotNum : 1,
         customerNum : 10000001,
@@ -96,15 +97,25 @@ class AppContainer extends Component {
     this.setState({[key]: val});
   }
 
-  updateInstanceDataValue = (val) => {
+  updateInstanceDataValue1 = (key, val) => {
+    this.setState(prevState => ({
+      ...prevState,
+      instanceData: {
+        ...prevState.instanceData,
+        [key]: val,
+      },
+    }));
+  }
+
+  updateInstanceDataValue2 = (val) => {
     this.setState({
-      instanceData:val
+      instanceData: val,
     });
   }
 
   addUser_UseCafe = (val1,val2) => {
     this.setState({
-      listData: this.state.listData.concat(val1),
+      usedUserListData: this.state.usedUserListData.concat(val1),
       instanceData:{
         name: null,
         day:'1900-01-01',
@@ -131,7 +142,7 @@ class AppContainer extends Component {
 
   curUser = () =>{
     if(this.state.instanceData.loginCustomerNum !== null){
-      return this.state.listData[this.state.instanceData.loginCustomerNum];
+      return this.state.usedUserListData[this.state.instanceData.loginCustomerNum];
     }
     else {
       return {
@@ -145,16 +156,13 @@ class AppContainer extends Component {
     }
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-      return (JSON.stringify(nextProps) !== JSON.stringify(this.props));
-  }
-
   render() {
     return (
       <Store.Provider value={{
           state: this.state,
           updateValue: this.updateValue,
-          updateInstanceDataValue: this.updateInstanceDataValue,
+          updateInstanceDataValue1: this.updateInstanceDataValue1,
+          updateInstanceDataValue2: this.updateInstanceDataValue2,
           addUser_UseCafe:this.addUser_UseCafe,
           curUser: this.curUser,
           stateClear: this.stateClear

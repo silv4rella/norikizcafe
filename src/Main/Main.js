@@ -97,15 +97,7 @@ handleKeyPress = (event) => {
               <button className="button1"
                       onClick={()=>{
                         this.props.start();
-                        console.log(this.state.pn);
-                        store.updateInstanceDataValue({
-                          name: null,
-                          day:'1900-01-01',
-                          startTime: null,
-                          endTime: null,
-                          phoneNum: this.state.pn,
-                          loginCustomerNum: null,
-                        });
+                        store.updateInstanceDataValue1('phoneNum', this.state.pn);
                         this.clear();
                       }}
               >
