@@ -6,6 +6,13 @@ import Store from "../store.js";
 
 class ListBox extends Component {
 
+constructor() {
+  super();
+  this.state = {
+    timeInterval: false,
+    elapsedTime:''
+  };
+}
 
 calcElapsedTime(value) {
 
@@ -18,12 +25,15 @@ calcElapsedTime(value) {
   var minute = duration.minutes();
   var second = duration.seconds();
 
-  var stringDay = day === 0 ? '' : day + '일';
-  var stringHour = hour === 0 ? '00:' : (hour > 9 ? hour : '0' + hour);
-  var stringMin = minute === 0 ? '00:' : (minute > 9 ? minute : '0' + minute);
-  var stringSec = second === 0 ? '00' : (second > 9 ? second : '0' + second);
+  var stringHour = !hour || hour === 0 ? '00' : (hour > 9 ? hour : '0' + hour);
+  var stringMin = !minute || minute === 0 ? '00' : (minute > 9 ? minute : '0' + minute);
+  var stringSec = !second || second === 0 ? '00' : (second > 9 ? second : '0' + second);
 
-  return (''+stringDay+stringHour+stringMin+stringSec)
+  if (!day || day === 0) {
+    return (stringHour + ':' + stringMin + ':' + stringSec)
+  } else {
+    return ('' + day + '일:' + stringHour + ':' + stringMin + ':' + stringSec)
+  }
 
 }
 
@@ -34,7 +44,7 @@ subInfo = (val) =>
       <div className="BoxButton_TitleBox">
         <div className="BoxButtonText_Title">{this.props.index}</div>
         <div className="BoxButtonText_etc1">{this.props.name ? this.props.name : '-'}</div>
-        <div className="BoxButtonText_etc2">{this.props.startTime ? this.calcElapsedTime(this.props.startTime)  : '-'}</div>
+        <div className="BoxButtonText_etc2">{this.props.startTime ? this.state.elapsedTime : '-'}</div>
       </div>
     );
   } else {
@@ -42,6 +52,25 @@ subInfo = (val) =>
         <div className="BoxButton_TitleBox_text">{this.props.index}</div>
     );
   }
+}
+
+slotUpdate = (val) => {
+  if (this.state.timeInterval === false)
+  {
+    this.setState({
+      timeInterval: true,
+    });
+    this.interval = setInterval(() => {
+      this.setState({
+        elapsedTime: this.calcElapsedTime(this.props.startTime),
+      });
+    }, 1000);
+  }
+
+  this.setState({
+    elapsedTime: this.calcElapsedTime(this.props.startTime),
+  });
+  return
 }
 
   render() {
@@ -72,14 +101,16 @@ subInfo = (val) =>
                     phoneNum: store.state.instanceData.phoneNum,
                     child: null,
                 }, store.state.usedUserListData.length);
+                this.slotUpdate(this.props.useSlotNum);
                 this.props.swipe();
               }}
             >
-              {this.subInfo(this.props.useSlotNum)}
+              {
+                this.subInfo(this.props.useSlotNum)
+              }
             </button>
           )}
         </Store.Consumer>
-
     );
   }
 }

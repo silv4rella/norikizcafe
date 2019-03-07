@@ -16,12 +16,13 @@ class AppContainer extends Component {
       today_parent:0,
       today_child:0,
       now_parent:0,
-      now_out:0,
+      now_child:0,
       out_parent:0,
-      out_out:0
+      out_child:0
     },
-    usedUserListData:[],
-    dumy_usedUserListData: [
+    usedUserListData:[
+    ],
+    dumy_UserDB: [
       {
         useSlotNum : 1,
         customerNum : 10000001,
@@ -29,7 +30,7 @@ class AppContainer extends Component {
         day:'1900-01-01',
         startTime:'00:00:00',
         endTime:'00:00:00',
-        phoneNum:'010-1111-1111',
+        phoneNum:'7',
         child:[
           {
             name:'노리11',
@@ -114,8 +115,16 @@ class AppContainer extends Component {
   }
 
   addUser_UseCafe = (val1,val2) => {
-    this.setState({
+    this.setState(prevState => ({
       usedUserListData: this.state.usedUserListData.concat(val1),
+      usedUserCount:{
+        today_parent:prevState.usedUserCount.today_parent+1,
+        today_child:0,
+        now_parent:prevState.usedUserCount.now_parent+1,
+        now_child:0,
+        out_parent:0,
+        out_child:0
+      },
       instanceData:{
         name: null,
         day:'1900-01-01',
@@ -124,7 +133,7 @@ class AppContainer extends Component {
         phoneNum: val1.phoneNum,
         loginCustomerNum:val2,
       }
-    });
+    }));
   }
 
   stateClear = () => {
@@ -142,17 +151,10 @@ class AppContainer extends Component {
 
   curUser = () =>{
     if(this.state.instanceData.loginCustomerNum !== null){
-      return this.state.usedUserListData[this.state.instanceData.loginCustomerNum];
+      return this.state.dumy_UserDB[this.state.instanceData.loginCustomerNum];
     }
     else {
-      return {
-        name: null,
-        day:'1900-01-01',
-        startTime: null,
-        endTime: null,
-        phoneNum: null,
-        loginCustomerNum: null,
-      };
+      return this.state.instanceData;
     }
   }
 

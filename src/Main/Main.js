@@ -45,26 +45,61 @@ handleKeyPress = (event) => {
   }
 }
 
+findArrayElementBySlotNum(array, phoneNum) {
+  return array.findIndex((element) => {
+    return element.phoneNum === phoneNum;
+  })
+}
+
+findUser(userlist, phoneNum) {
+    var list,findIndex = -1;
+    findIndex = this.findArrayElementBySlotNum(userlist, phoneNum);
+    if (findIndex > -1) {
+      list = {
+        name: userlist[findIndex].name,
+        day: userlist[findIndex].day,
+        startTime: userlist[findIndex].startTime,
+        endTime: userlist[findIndex].endTime,
+        phoneNum: userlist[findIndex].phoneNum,
+        loginCustomerNum: findIndex,
+      }
+    } else {
+      list = {
+        name: null,
+        day:'1900-01-01',
+        startTime: null,
+        endTime: null,
+        phoneNum: phoneNum,
+        loginCustomerNum: null,
+      }
+    }
+    return list;
+}
+
   render() {
     return (
       <div>
         <div className="View1">
           <img src={logo} className="App-logo" alt="login1"/>
           {/*<button className="prevButton" onClick={this.props.swipe}>◀</button>*/}
-          <div className="mainCountView">
-            <div className="mainTodayCount">
-              <div>Today</div>
-              <div>&10 &10</div>
-            </div>
-            <div className="mainNowCount">
-              <div>Now</div>
-              <div>&1 &1</div>
-            </div>
-            <div className="mainOutCount">
-              <div>Out</div>
-              <div>&3 &3</div>
-            </div>
-          </div>
+            <Store.Consumer>
+              {store => (
+                <div className="mainCountView">
+                  <div className="mainTodayCount">
+                    <div>Today</div>
+                    <div>&{store.state.usedUserCount.today_parent} c{store.state.usedUserCount.today_child}</div>
+                  </div>
+                  <div className="mainNowCount">
+                    <div>Now</div>
+                    <div>&{store.state.usedUserCount.now_parent} c{store.state.usedUserCount.now_child}</div>
+                  </div>
+                  <div className="mainOutCount">
+                    <div>Out</div>
+                    <div>&{store.state.usedUserCount.out_parent} c{store.state.usedUserCount.out_child}</div>
+                  </div>
+                </div>
+              )}
+            </Store.Consumer>
         </div>
         <div className="View2">
           <button className="privacyPolicy" onClick={this.togglePopup.bind(this)}>
@@ -96,8 +131,9 @@ handleKeyPress = (event) => {
             {store => (
               <button className="button1"
                       onClick={()=>{
+                        var data = this.findUser(store.state.dumy_UserDB, this.state.pn);
+                        store.updateInstanceDataValue2(data);
                         this.props.start();
-                        store.updateInstanceDataValue1('phoneNum', this.state.pn);
                         this.clear();
                       }}
               >

@@ -19,6 +19,8 @@ constructor() {
   super();
   this.state = {
       show_ticketPurchase: false,
+      parentCount: 1,
+      childCount: 1,
   };
 }
 
@@ -26,6 +28,14 @@ ticketPurchasePopup() {
   this.setState({
     show_ticketPurchase: !this.state.show_ticketPurchase
   });
+}
+
+calcPersonCount(value1, value2){
+  if (value2 >= 0) {
+    this.setState({[value1]: value2});
+  } else {
+    this.setState({[value1]: 0});
+  }
 }
 
 curUserData = () =>
@@ -57,6 +67,7 @@ curUserData = () =>
             </Store.Consumer>
             <div className="titleBar_Text">정보</div>
             <div className="titleBar_dumy"></div>
+            <button className="titleBar_Closebutton" onClick={this.props.prev}>X</button>
           </div>
           <ScrollArea className="infoScrollView"
             speed={1}
@@ -84,25 +95,25 @@ curUserData = () =>
               <img src={img_child} className="countViewPersonImage Image_border-left" alt="img_parent"/>
             </div>
             <div className="countViewPersonButton">
-              <button className="countViewButton button_border-right">
+              <button className="countViewButton button_border-right" onClick={()=>this.calcPersonCount('parentCount', this.state.parentCount-1)}>
                 <img src={img_minus} className="countViewButtonImage" alt="img_parent_sub"/>
               </button>
-              <button className="countViewButton button_border-left button_border-right">
+              <button className="countViewButton button_border-left button_border-right" onClick={()=>this.calcPersonCount('parentCount', this.state.parentCount+1)}>
                 <img src={img_plus} className="countViewButtonImage" alt="img_parent_add"/>
               </button>
-              <button className="countViewButton button_border-left button_border-right">
+              <button className="countViewButton button_border-left button_border-right" onClick={()=>this.calcPersonCount('childCount', this.state.childCount-1)}>
                 <img src={img_minus} className="countViewButtonImage" alt="img_child_sub"/>
               </button>
-              <button className="countViewButton button_border-left">
+              <button className="countViewButton button_border-left" onClick={()=>this.calcPersonCount('childCount', this.state.childCount+1)}>
                 <img src={img_plus} className="countViewButtonImage" alt="img_child_add"/>
               </button>
             </div>
             <div className="numberView">
               <div className="numberView_textbox numberView_border-right">
-                <div className="numberView_text" > 1</div>
+                <div className="numberView_text" > {this.state.parentCount}</div>
               </div>
               <div className="numberView_textbox numberView_border-left">
-                <div className="numberView_text" > 2</div>
+                <div className="numberView_text" > {this.state.childCount}</div>
               </div>
             </div>
             <div className="ticketButtonView ticketButtonView_border1">

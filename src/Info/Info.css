@@ -39,11 +39,19 @@
   text-align: center;
 }
 
-.titleBar_dumy{
+.titleBar_Closebutton{
   float: right;
-  margin-right: 2%;
-  width: 20%;
-  min-height: 100%;
+  width: calc(5px + 12vmin);
+  min-height: 90%;
+  font-family: malgun;
+  font-size: calc(1px + 5vmin);
+  color: white;
+  text-align: center;
+  margin-right: 3vmin;
+  border-radius: 10px;
+  border: 0 none gray;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .infoScrollView {
@@ -408,11 +416,6 @@
   color: var(--MainColor1);
 }
 
-.countViewButtonImage:hover{
-  -webkit-filter: saturate(10);
-  filter: saturate(10);
-}
-
 .countViewButtonImage:active{
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
@@ -510,10 +513,6 @@
   font-family: malgun;
   font-weight: bold;
   font-size: calc(4px + 2vmin);
-}
-
-.ticketButton:hover{
-  background-color: var(--SubColor5);
 }
 
 .ticketButton:active{

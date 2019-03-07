@@ -15,37 +15,48 @@ class App extends Component {
   init = false;
 
   state = {
-   index: 1,
+   index: 0,
   }
 
   handleChangeIndex = index => {
+
+    const oldIndex = this.state.index;
     this.setState({
-      index : index
+      index,
+    }, () => {
+      if (index > oldIndex) {
+        this.setState({
+          index: oldIndex,
+        });
+      }
     });
-    if (index === 1 ) {
+
+    if (index === 0 ) {
       this.init = true;
     }
     else {
       this.init = false;
     }
+
   };
 
-  handleSetIndex0 = index => {
+  handleGotoMain = index => {
     this.setState({
       index: 0
     });
+    this.init = true;
   };
-  handleSetIndex1 = index => {
+  handleGotoInfo = index => {
     this.setState({
       index: 1
     });
   };
-  handleSetIndex2 = index => {
+  handleGotoList = index => {
     this.setState({
       index: 2
     });
   };
-  
+
   render() {
     const { index } = this.state;
 
@@ -62,9 +73,9 @@ class App extends Component {
           return (
           <div className="swipe-wrap">
             <SwipeableViews index={index} onChangeIndex={this.handleChangeIndex} enableMouseEvents >
-              <div> <Info swipe={this.handleSetIndex1} /> </div>
-              <div> <Main swipe={this.handleSetIndex0} start={this.handleSetIndex2} ref={ref => {this.container = ref;}} /> </div>
-              <div> <List swipe={this.handleSetIndex0} listPageMaxCount={this.listPageMaxCount} listBoxCount={this.listBoxCount} /> </div>
+              <div> <Main start={this.handleGotoInfo} ref={ref => {this.container = ref;}} /> </div>
+              <div> <Info prev={this.handleGotoMain} entrance={this.handleGotoList} /> </div>
+              <div> <List swipe={this.handleGotoMain} listPageMaxCount={this.listPageMaxCount} listBoxCount={this.listBoxCount} /> </div>
             </SwipeableViews>
           </div>
         )}}

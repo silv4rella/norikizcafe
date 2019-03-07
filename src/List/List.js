@@ -82,20 +82,24 @@ class List extends Component
           <div className="list">
             <div className="listView">
               <div className="listInfoView">
-                <div className="listCountView">
-                  <div className="titleTodayCount">
-                    <div>Today</div>
-                    <div>&10 &10</div>
-                  </div>
-                  <div className="titleNowCount">
-                    <div>Now</div>
-                    <div>&1 &1</div>
-                  </div>
-                  <div className="titleOutCount">
-                    <div>Out</div>
-                    <div>&3 &3</div>
-                  </div>
-                </div>
+                <Store.Consumer>
+                  {store => (
+                    <div className="listCountView">
+                      <div className="titleTodayCount">
+                        <div>Today</div>
+                        <div>&{store.state.usedUserCount.today_parent} c{store.state.usedUserCount.today_child}</div>
+                      </div>
+                      <div className="titleNowCount">
+                        <div>Now</div>
+                        <div>&{store.state.usedUserCount.now_parent} c{store.state.usedUserCount.now_child}</div>
+                      </div>
+                      <div className="titleOutCount">
+                        <div>Out</div>
+                        <div>&{store.state.usedUserCount.out_parent} c{store.state.usedUserCount.out_child}</div>
+                      </div>
+                    </div>
+                  )}
+                </Store.Consumer>
                 <div className="listSearchBar">
                   <div>Out</div>
                 </div>
