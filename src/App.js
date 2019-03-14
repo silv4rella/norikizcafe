@@ -12,8 +12,6 @@ class App extends Component {
   listPageMaxCount = 49;
   listBoxCount = 150;
 
-  init = false;
-
   state = {
    index: 0,
   }
@@ -29,47 +27,35 @@ class App extends Component {
           index: oldIndex,
         });
       }
+      if (oldIndex === 1) {
+        this.setState({
+          index: oldIndex,
+        });
+      }
     });
-
-    if (index === 0 ) {
-      this.init = true;
-    }
-    else {
-      this.init = false;
-    }
-
   };
 
   handleGotoMain = index => {
     this.setState({
-      index: 0
+      index: 0,
     });
-    this.init = true;
   };
   handleGotoInfo = index => {
     this.setState({
-      index: 1
+      index: 1,
     });
   };
   handleGotoList = index => {
     this.setState({
-      index: 2
+      index: 2,
     });
   };
 
   render() {
-    const { index } = this.state;
-
+    const index = this.state.index;
     return (
       <Store.Consumer>
         {store => {
-          if (this.init === true ) {
-            store.stateClear();
-            this.init = false;
-          }
-          else {
-            this.init = false;
-          }
           return (
           <div className="swipe-wrap">
             <SwipeableViews index={index} onChangeIndex={this.handleChangeIndex} enableMouseEvents >

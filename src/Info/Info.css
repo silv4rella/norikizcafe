@@ -8,6 +8,7 @@
 }
 
 .titleBar{
+  flex-direction: row;
     display: flex;
     width: 100%;
     min-height: 7vh;
@@ -26,7 +27,7 @@
 
 .titleBar_phoneNum{
   float: left;
-  margin-left: 2%;
+  margin-left: 3vmin;
   width: 20%;
   min-height: 100%;
   text-align: left;
@@ -41,12 +42,12 @@
 
 .titleBar_Closebutton{
   float: right;
-  width: calc(5px + 12vmin);
+  width: 20%;
   min-height: 90%;
   font-family: malgun;
   font-size: calc(1px + 5vmin);
   color: white;
-  text-align: center;
+  text-align: right;
   margin-right: 3vmin;
   border-radius: 10px;
   border: 0 none gray;

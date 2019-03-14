@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
+import NumberFormat from "react-number-format";
 
 import Store from "../store.js";
 
 class UserInfo extends Component {
+
+constructor() {
+  super();
+  this.state = {
+    userPhoneNum: null,
+    userName: null,
+    userDay: null,
+  };
+}
+
 
 userChildInfo = () =>{
   if (this.props.userChildInfo || this.props.userChildInfo !== null) {
@@ -44,11 +55,25 @@ userChildInfo = () =>{
   }
 }
 
-  shouldComponentUpdate(nextProps, nextState){
-    	return (JSON.stringify(nextProps) !== JSON.stringify(this.props));
-  }
+input1_ChangedHandler = e => {
+    this.setState({ userName: e.target.value, });
+};
+
+input2_ChangedHandler = e => {
+    this.setState({ userDay: e.target.value, });
+};
+
+input3_ChangedHandler = values => {
+    this.setState({ userPhoneNum: values.value, });
+};
 
   render() {
+    var userName, userDay, userPhoneNum;
+
+    userName = (this.props.userName === null || this.props.userName === 'null') ? '' : this.props.userName;
+    userDay = (this.props.userDay === null || this.props.userDay === 'null') ? '' : this.props.userDay;
+    userPhoneNum = (this.props.userPhoneNum === null || this.props.userPhoneNum === 'null') ? '' : this.props.userPhoneNum;
+
 
     return (
       <Store.Consumer>
@@ -56,9 +81,22 @@ userChildInfo = () =>{
           <div className="userInfoView_sub1">
             <div className="userInfo_line">
               <div className="userInfo_line1">보호자</div>
-              <div className="userInfo_line2">{this.props.userName ? this.props.userName : 'null'}</div>
-              <div className="userInfo_line3">{this.props.userDay ? this.props.userDay : 'null'}</div>
-              <div className="userInfo_line4">{this.props.userPhoneNum ? this.props.userPhoneNum : 'null'}</div>
+              <input className="userInfo_line2"
+                placeholder="이름"
+                value={userName}
+                onChange={this.input1_ChangedHandler}
+              />
+              <input className="userInfo_line3"
+                placeholder="생년월일"
+                value={userDay}
+                onChange={this.input2_ChangedHandler}
+              />
+              <NumberFormat className="userInfo_line4"
+                format= "###-####-####"
+                placeholder="전화번호"
+                value={userPhoneNum ? userPhoneNum : 'null'}
+                onValueChange={this.input3_ChangedHandler}
+              />
             </div>
             {this.userChildInfo()}
           </div>

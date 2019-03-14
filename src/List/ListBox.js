@@ -10,9 +10,11 @@ constructor() {
   super();
   this.state = {
     timeInterval: false,
-    elapsedTime:''
+    elapsedTime:'',
   };
+
 }
+
 
 calcElapsedTime(value) {
 
@@ -73,6 +75,28 @@ slotUpdate = (val) => {
   return
 }
 
+findArrayElementBySlotNum(array, phoneNum) {
+  return array.findIndex((element) => {
+    return element.phoneNum === phoneNum;
+  })
+}
+
+usingInUserChaek(slotNum, phoneNum, userList) {
+    var findIndex = -1;
+    findIndex = this.findArrayElementBySlotNum(userList, phoneNum);
+    if (findIndex > -1) {
+      var item = userList[findIndex];
+      if (item.useSlotNum !== null) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    else {
+      return false;
+    }
+}
+
   render() {
     return (
 
@@ -82,32 +106,29 @@ slotUpdate = (val) => {
               className={this.props.useSlotNum ? "BoxButton_used" : "BoxButton_unUsed" }
               value={this.props.phoneNum}
               onClick={()=>{
-                this.props.useSlotNum !== null ?
-                store.updateInstanceDataValue2({
-                  name: null,
-                  day:'1900-01-01',
-                  startTime: Moment(new Date()).format('HH:mm:ss'),
-                  endTime: null,
-                  phoneNum: this.props.phoneNum,
-                  loginCustomerNum:this.props.listIndex,
-                }) :
-                store.addUser_UseCafe({
-                    useSlotNum : this.props.index,
-                    customerNum : '',
-                    name: this.props.name,
-                    day:'1900-01-01',
-                    startTime: Moment(new Date()).format('HH:mm:ss'),
-                    endTime:'00:00:00',
-                    phoneNum: store.state.instanceData.phoneNum,
-                    child: null,
-                }, store.state.usedUserListData.length);
-                this.slotUpdate(this.props.useSlotNum);
-                this.props.swipe();
+                if (this.props.useSlotNum !== null) {
+                  this.props.showPopup1();
+                } else if (this.usingInUserChaek(this.props.index, store.state.instanceData.phoneNum, store.state.usedUserListData)) {
+                  this.props.showPopup2();
+                } else {
+                  store.addUser_UseCafe({
+                      customerNum: store.state.instanceData.customerNum,
+                      useSlotNum : this.props.index,
+                      name: store.state.instanceData.name,
+                      day: store.state.instanceData.day,
+                      phoneNum: store.state.instanceData.phoneNum,
+                      startTime: Moment(new Date()).format('HH:mm:ss'),
+                      endTime:'00:00:00',
+                      parentCount: store.state.instanceData.parentCount,
+                      childCount: store.state.instanceData.childCount,
+                      child: store.state.instanceData.child,
+                  }, store.state.usedUserListData.length);
+                  this.slotUpdate(this.props.useSlotNum);
+                  this.props.swipe();
+                }
               }}
             >
-              {
-                this.subInfo(this.props.useSlotNum)
-              }
+              {this.subInfo(this.props.useSlotNum)}
             </button>
           )}
         </Store.Consumer>

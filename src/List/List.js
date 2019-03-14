@@ -5,6 +5,8 @@ import './List.css';
 
 import Store from "../store.js";
 import ListBox from "./ListBox.js";
+import Portal from '@material-ui/core/Portal';
+import AlertView from "../Popup/AlertView.js";
 
 import Page1 from '../image/1.jpg';
 
@@ -25,9 +27,26 @@ import Page1 from '../image/1.jpg';
 class List extends Component
 {
 
+  constructor() {
+    super();
+    this.state = {
+     index: 0,
+     showPopup_type1: false,
+     showPopup_type2: false,
+    };
+  }
 
-  state = {
-   index: 0,
+
+  togglePopup_type1() {
+    this.setState({
+      showPopup_type1: !this.state.showPopup_type1
+    });
+  }
+
+  togglePopup_type2() {
+    this.setState({
+      showPopup_type2: !this.state.showPopup_type2
+    });
   }
 
   handleChange = (index) => {
@@ -55,19 +74,29 @@ class List extends Component
         findIndex = this.findArrayElementBySlotNum(d, i+1);
         if (findIndex > -1) {
           list = list.concat(<ListBox
-           key={i}
-           index={i+1}
-           listIndex={findIndex}
-           useSlotNum={d[findIndex].useSlotNum}
-           name={d[findIndex].name}
-           startTime={d[findIndex].startTime}
-           endTime={d[findIndex].endTime}
-           phoneNum={d[findIndex].phoneNum}
-           swipe={this.props.swipe}
-           action={this.props.action}
-         />)
+             key={i}
+             index={i+1}
+             listIndex={findIndex}
+             useSlotNum={d[findIndex].useSlotNum}
+             name={d[findIndex].name}
+             startTime={d[findIndex].startTime}
+             endTime={d[findIndex].endTime}
+             phoneNum={d[findIndex].phoneNum}
+             swipe={this.props.swipe}
+             action={this.props.action}
+             showPopup1={this.togglePopup_type1.bind(this)}
+             showPopup2={this.togglePopup_type2.bind(this)}
+          />)
         } else {
-          list = list.concat(<ListBox key={i} index={i+1} useSlotNum={null} swipe={this.props.swipe} action={this.props.action}/>)
+          list = list.concat(<ListBox
+            key={i}
+            index={i+1}
+            useSlotNum={null}
+            swipe={this.props.swipe}
+            action={this.props.action}
+            showPopup1={this.togglePopup_type1.bind(this)}
+            showPopup2={this.togglePopup_type2.bind(this)}
+          />)
         }
       }
       return list;
@@ -76,7 +105,7 @@ class List extends Component
 
   render() {
 
-    const { index } = this.state;
+    const index = this.state.index;
 
     return (
           <div className="list">
@@ -130,6 +159,31 @@ class List extends Component
                 <img src={Page1} className="PageNumber" alt="login1" onClick={()=>this.handleChange(2)} />
               </div>
             </div>
+
+            {this.state.showPopup_type1 ?
+              <Portal container={this.container}>
+                <AlertView
+                  titleText='경고'
+                  commentType='이미 이용중인 고객이 있습니다.'
+                  okButtonText='확인'
+                  okButtonFunc={this.togglePopup_type1.bind(this)}
+                  closePopup={this.togglePopup_type1.bind(this)}
+                />
+              </Portal>
+              : null
+            }
+            {this.state.showPopup_type2 ?
+              <Portal container={this.container}>
+                <AlertView
+                  titleText='경고'
+                  commentType='이미 이용중인 신발장이 있습니다.'
+                  okButtonText='확인'
+                  okButtonFunc={this.togglePopup_type2.bind(this)}
+                  closePopup={this.togglePopup_type2.bind(this)}
+                />
+              </Portal>
+              : null
+            }
           </div>
     );
   }
